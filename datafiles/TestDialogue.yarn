@@ -1,0 +1,44 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 491,299
+__PrivCrochet_tags: 
+title: Start
+---
+NPC1: Do you want to fight?
+    -> Yes.
+        NPC1: Let's go!
+        <<jump Option A>>
+    -> No Thanks.
+        NPC1: Okay, let me know if you change your mind.
+        <<jump Option B>>
+    -> Test if said Yes <<if visited("Option C" == false>>
+        NPC1: Sure.
+        <<jump Option C>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 786,60
+__PrivCrochet_tags: 
+title: Option A
+---
+You: cue fight
+NPC1: Wow!
+<<jump Start>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 801,361
+__PrivCrochet_tags: 
+title: Option B
+---
+You: dont cue fight
+NPC1: Wow!
+<<jump Start>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 802,671
+__PrivCrochet_tags: 
+title: Option C
+---
+You: temp text
+NPC1: Wow!
+<<jump Start>>
+===
