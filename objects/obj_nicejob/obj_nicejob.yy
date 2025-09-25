@@ -10,8 +10,8 @@
   "name":"obj_nicejob",
   "overriddenProperties":[],
   "parent":{
-    "name":"battle",
-    "path":"folders/Objects/battle.yy",
+    "name":"music",
+    "path":"folders/Objects/battle/music.yy",
   },
   "parentObjectId":null,
   "persistent":false,

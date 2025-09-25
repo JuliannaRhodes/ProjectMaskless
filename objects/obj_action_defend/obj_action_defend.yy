@@ -1,19 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_music_controller",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_action_defend",
+  "eventList":[],
   "managed":true,
-  "name":"obj_music_controller",
+  "name":"obj_action_defend",
   "overriddenProperties":[],
   "parent":{
     "name":"battle",
     "path":"folders/Objects/battle.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_action_parent",
+    "path":"objects/obj_action_parent/obj_action_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_item",
+    "path":"sprites/spr_item/spr_item.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,4 +1,4 @@
-if keyboard_check_direct(ord("A")) or keyboard_check_direct(ord("a")) {
+if keyboard_check_direct(ord("F")) or keyboard_check_direct(ord("f")) {
 	image_index = 5
 	global.red_pressed = true
 }
