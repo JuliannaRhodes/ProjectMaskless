@@ -13,7 +13,7 @@ menu_choice = 0; // current menu index
 menu_options = ["Attack", "Defend", "Item", "Run"];
 
 // get the background layer ID
-bg_layer_id = layer_get_id("background_battle");
+bg_layer_id = layer_background_get_id("background_battle");
 
 // start with menu background
 layer_background_sprite(bg_layer_id, spr_bg_battlemenu);
