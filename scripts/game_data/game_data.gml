@@ -24,7 +24,7 @@ global.enemies =
 		mp: 0,
 		mpMax: 0,
 		strength: 6,
-		sprites: {},
+		sprites: { idle: spr_npc_battle},
 		actions: [],
 		xpValue: 15,
 		AIscript: function()

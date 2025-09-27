@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_action_run",
+  "%Name":"Object25",
   "eventList":[],
   "managed":true,
-  "name":"obj_action_run",
+  "name":"Object25",
   "overriddenProperties":[],
   "parent":{
     "name":"battle",
@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_npc_battle",
+    "path":"sprites/spr_npc_battle/spr_npc_battle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

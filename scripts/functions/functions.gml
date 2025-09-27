@@ -28,3 +28,16 @@ function chatterbox_update() {
 	node = ChatterboxGetCurrent(chatterbox);
 	text = ChatterboxGetContent(chatterbox, 0);
 }
+
+function NewEncounter(_enemies, _bg)
+{
+	instance_create_depth
+	( 
+		camera_get_view_x(view_camera[0]),
+		camera_get_view_y(view_camera[0]),
+		-9999,
+		obj_battle_controller,
+		{enemies: _enemies, creator: id, battleBackground: _bg}
+	);
+		
+}

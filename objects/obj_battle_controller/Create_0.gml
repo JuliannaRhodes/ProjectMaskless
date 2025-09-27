@@ -1,4 +1,4 @@
-// battle states
+
 enum BattlePhase {
     MENU,
     ATTACK,

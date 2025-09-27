@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_action_run",
-  "eventList":[],
+  "%Name":"obj_battle_units",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_action_run",
+  "name":"obj_battle_units",
   "overriddenProperties":[],
   "parent":{
     "name":"battle",

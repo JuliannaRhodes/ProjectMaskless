@@ -29,10 +29,10 @@ else if (battle_phase == BattlePhase.RHYTHM) {
 //MENU INPUT
 if (battle_phase == BattlePhase.MENU) {
     // Move selection left/right
-    if (keyboard_check_pressed(vk_left)) {
+	if (keyboard_check_pressed(vk_left) || keyboard_check_pressed(vk_up)) {
         menu_choice = (menu_choice - 1 + array_length(menu_options)) mod array_length(menu_options);
     }
-    if (keyboard_check_pressed(vk_right)) {
+    if (keyboard_check_pressed(vk_right) || keyboard_check_pressed(vk_down)) {
         menu_choice = (menu_choice + 1) mod array_length(menu_options);
     }
 
@@ -69,7 +69,7 @@ if (battle_phase == BattlePhase.MENU) {
 
             case "Run":
                 // exit battle
-                room_goto(rm_main);
+                room_goto(obj_battle_switcher.original_room)
             break;
         }
     }
