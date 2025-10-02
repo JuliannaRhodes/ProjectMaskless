@@ -42,39 +42,33 @@ if (battle_phase == BattlePhase.MENU) {
 
         switch (choice) {
             case "Attack":
+                global.current_action = "ATTACK"; 
                 battle_phase = BattlePhase.RHYTHM;
-
-                // reset rhythm vars
                 frame_counter = 0;
                 note_counter = 0;
                 beat_counter = 0;
-
                 audio_play_sound(snd_lekemusic, 1, false);
             break;
 
             case "Defend":
+                global.current_action = "DEFEND"; 
                 battle_phase = BattlePhase.RHYTHM;
-                // you can make a different rhythm array for defense later
                 frame_counter = 0;
                 note_counter = 0;
                 beat_counter = 0;
-
                 audio_play_sound(snd_lekemusic, 1, false);
             break;
 
             case "Item":
-                // placeholder for inventory logic
                 show_debug_message("Used an item!");
             break;
 
             case "Run":
-                // exit battle
                 room_goto(obj_battle_switcher.original_room)
             break;
         }
     }
-}
-
+} 
 
 
 

@@ -32,6 +32,7 @@ global.blue_pressed = false
 
 global.level = 0
 global.points = 0
+global.current_action = "";
 
 frame_counter = 0
 note_counter = 0
@@ -51,5 +52,3 @@ function pad_score(value, length) {
 
 credits_to_draw = "1.mp3 by Leke"
 score_to_draw =""
-
-	

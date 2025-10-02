@@ -27,3 +27,11 @@ if (battle_phase == BattlePhase.RHYTHM) {
     draw_text(550, 200, "Playing: ");
     draw_text(100, 300, credits_to_draw);
 }
+
+// --- Draw HP ---
+draw_set_color(c_red);
+draw_text(50, 50, "Player HP: " + string(global.player_hp) + " / " + string(global.player_max_hp));
+
+draw_set_color(c_green);
+draw_text(400, 50, "Enemy HP: " + string(global.npc1_hp) + " / " + string(global.npc1_max_hp));
+
