@@ -3,8 +3,7 @@ enum BattlePhase {
     MENU,
     ATTACK,
     DEFEND,
-    RHYTHM,
-    RESOLVE
+    RHYTHM
 }
 
 // Start in menu (player chooses Attack/Defend/etc.)
@@ -23,7 +22,7 @@ layer_background_sprite(bg_layer_id, spr_bg_battlemenu);
 global.battle_phase = BattlePhase.MENU;
 
 
-global.move_speed = 15
+global.move_speed = 8
 
 global.green_pressed = false
 global.red_pressed = false
@@ -34,10 +33,13 @@ global.level = 0
 global.points = 0
 global.current_action = "";
 
+global.note_spawn_interval = 4; // spawn a note every 4 beats (slower)
+
+
 frame_counter = 0
 note_counter = 0
 
-frame_beat_counter = 15
+frame_beat_counter = 30
 frame_beat_counter_total = 15
 
 beat_counter = 0

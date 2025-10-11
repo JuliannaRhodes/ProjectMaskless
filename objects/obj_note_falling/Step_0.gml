@@ -1,46 +1,113 @@
 // --- Get globals ---
 var phase = global.current_action;
 
-// --- Correct fret check ---
-is_correct_fret = false;
-if (image_index == 1 && global.green_pressed) is_correct_fret = true;
-if (image_index == 2 && global.red_pressed) is_correct_fret = true;
-if (image_index == 3 && global.orange_pressed) is_correct_fret = true;
-if (image_index == 4 && global.blue_pressed) is_correct_fret = true;
-
 // --- Move note ---
 x -= global.move_speed;
-if x < -25 || x > room_width + 25 { instance_destroy(); }
 
-// --- Check hit ---
-if (keyboard_check_pressed(vk_space)) {
-    var x_distance = abs(x - obj_hitbox.x);
+// --- Calculate distance to hitbox ---
+var x_distance = abs(x - obj_hitbox.x);
 
-    if is_correct_fret && x_distance <= 100 {
-        var hp_change, score_change, message;
+// --- Check for hits using keyboard just pressed ---
+var hit_registered = false;
+switch(image_index) {
+    case 1: hit_registered = keyboard_check_pressed(ord("D")); break; // green
+    case 2: hit_registered = keyboard_check_pressed(ord("F")); break; // red
+    case 3: hit_registered = keyboard_check_pressed(ord("J")); break; // orange
+    case 4: hit_registered = keyboard_check_pressed(ord("K")); break; // blue
+}
 
-        if x_distance <= 25 { hp_change = 15; score_change = 100; message = "PERFECT!"; }
-        else if x_distance <= 50 { hp_change = 10; score_change = 70; message = "Nice!"; }
-        else if x_distance <= 75 { hp_change = 5; score_change = 40; message = "Okay"; }
-        else { hp_change = 2; score_change = 10; message = "Bad"; }
+var hit_success = false; // track if note was hit
 
-        // Apply HP
-        if phase == "ATTACK" {
-            global.npc1_hp -= hp_change;
+if (hit_registered) {
+    if (x_distance <= 100) {
+        // --- Accuracy grading ---
+        var accuracy = "";
+        if (x_distance <= 25) accuracy = "PERFECT";
+        else if (x_distance <= 50) accuracy = "NICE";
+        else if (x_distance <= 75) accuracy = "OKAY";
+        else accuracy = "MISS";
+
+        // Only treat as success if accuracy is not MISS
+        if (accuracy != "MISS") {
+            hit_success = true;
+
+            var damage_to_enemy = 0;
+            var damage_to_player = 0;
+
+            switch (phase) {
+                case "ATTACK":
+                    switch (accuracy) {
+                        case "OKAY": damage_to_enemy = 4; break;
+                        case "NICE": damage_to_enemy = 6; break;
+                        case "PERFECT": damage_to_enemy = 15; break;
+                    }
+                    break;
+                case "DEFEND":
+                    switch (accuracy) {
+                        case "OKAY": damage_to_enemy = 1; break;
+                        case "NICE": damage_to_enemy = 4; break;
+                        case "PERFECT": damage_to_enemy = 6; break;
+                    }
+                    break;
+            }
+
+            // --- Apply damage ---
+            global.npc1_hp -= damage_to_enemy;
+            global.player_hp -= damage_to_player; // usually 0 here
             global.npc1_hp = clamp(global.npc1_hp, 0, global.npc1_max_hp);
-        } else if phase == "DEFEND" {
-            global.player_hp += hp_change;
             global.player_hp = clamp(global.player_hp, 0, global.player_max_hp);
+
+            // --- Feedback ---
+            var nicejob = instance_create_layer(550, 200, "Instances", obj_nicejob);
+            nicejob.text_to_draw = accuracy;
+
+            instance_destroy(); // destroy note only on successful hit
+        } else {
+            // MISS in hit zone, counts as late miss
+            // handled below when note passes hitbox
         }
 
-        // Update score
-        global.points += score_change;
-
-        // Feedback
-        var nicejob = instance_create_layer(550, 200, "Instances", obj_nicejob);
-        nicejob.text_to_draw = message;
-
-        instance_destroy();
+    } else if (x_distance > 100) {
+        // Early press, note still falling
+        var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
+        switch (phase) {
+            case "ATTACK":
+                badhit.text_to_draw = "Miss Fire! Too early!";
+                break;
+            case "DEFEND":
+                badhit.text_to_draw = "Miss Fire! Too early!";
+                break;
+        }
     }
 }
 
+// --- Late miss: note passed hitbox without successful hit ---
+if (!hit_success && x < obj_hitbox.x - 100) {
+    var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
+
+    switch (phase) {
+        case "ATTACK":
+            global.player_hp -= 15;
+            badhit.text_to_draw = "Miss! You took 15 damage!";
+            break;
+        case "DEFEND":
+            global.player_hp -= 2;
+            badhit.text_to_draw = "Miss! You got hit (2 dmg)!";
+            break;
+    }
+
+    global.player_hp = clamp(global.player_hp, 0, global.player_max_hp);
+    instance_destroy();
+    exit;
+}
+
+// --- Destroy if offscreen to the far right (cleanup) ---
+if (x > room_width + 25) {
+    instance_destroy();
+    exit;
+}
+
+// --- End-of-turn check ---
+if (instance_number(obj_note_falling) == 0) {
+    global.turn_phase = "ENEMY";
+}

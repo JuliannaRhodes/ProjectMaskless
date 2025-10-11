@@ -13,11 +13,11 @@ move_speed = 4;
 move_x = 0;
 move_y = 0;
 
-global.player_hp = 100;
-global.player_max_hp = 100;
+global.player_hp = 200;
+global.player_max_hp = 200;
 
-hp = global.player_hp = 100;
-max_hp = global.player_max_hp = 100;
+hp = global.player_hp;
+max_hp = global.player_max_hp;
 
 
 

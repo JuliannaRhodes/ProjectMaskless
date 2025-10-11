@@ -2,14 +2,14 @@
 
 // pl1 coin counter
 
-draw_text(10,6, " stats: ");
 
 
 //npc2 dialogue boxes
 
 if (obj_npc2.txtbox==1)
     {
-    draw_text(118,396, "blah  blah blah.");
-    draw_text(118,412, "blah blah blah");
+	draw_sprite_stretched(spr_guibg_black,0,300,850,1500,150);
+    draw_text(400,875, "blah  blah blah.");
+    draw_text(400,920, "blah blah blah");
     draw_text(118,428, "");
     }

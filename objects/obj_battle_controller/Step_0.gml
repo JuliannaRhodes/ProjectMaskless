@@ -10,6 +10,9 @@ if (battle_phase == BattlePhase.MENU) {
 	with (obj_action_defend) visible = true;
 	with (obj_action_item) visible = true; 
 	with (obj_action_run) visible = true;
+	// Destroy all rhythm objects
+	with (obj_note_falling) instance_destroy();
+	with (obj_reed) instance_destroy();
 }
 else if (battle_phase == BattlePhase.RHYTHM) {
     layer_background_sprite(bg_layer_id, spr_bg_battlerhythm);
@@ -48,6 +51,7 @@ if (battle_phase == BattlePhase.MENU) {
                 note_counter = 0;
                 beat_counter = 0;
                 audio_play_sound(snd_lekemusic, 1, false);
+				rhythm_timer = room_speed * 10; // <-- 10-second timer
             break;
 
             case "Defend":
@@ -57,6 +61,7 @@ if (battle_phase == BattlePhase.MENU) {
                 note_counter = 0;
                 beat_counter = 0;
                 audio_play_sound(snd_lekemusic, 1, false);
+				 rhythm_timer = room_speed * 10; // <-- 10-second timer
             break;
 
             case "Item":
@@ -72,28 +77,39 @@ if (battle_phase == BattlePhase.MENU) {
 
 
 
-
 var lane_height = 50;
-var spawn_y_offset = 550; // pushes everything down
+var spawn_y_offset = 550; // pushes notes down
 
 // Only run rhythm logic if in rhythm phase
 if (battle_phase == BattlePhase.RHYTHM) {
+	
+	  // --- Timer ---
+    rhythm_timer--;
+    if (rhythm_timer <= 0) {
+        battle_phase = BattlePhase.MENU;
+        audio_stop_sound(snd_lekemusic);
+        exit; // stop rhythm logic once time runs out
+    }
     
+    // --- Beat/frame counter ---
     if frame_beat_counter > 0 {
         frame_beat_counter--;
     }
     else {
         beat_counter++;
-
-        // Example auto-spawn "reed" note
-        if beat_counter mod 2 == 0 {
+        
+        // --- Auto-spawn "reed" notes at adjustable interval ---
+        if (beat_counter mod 2 == 0) {
             instance_create_layer(1200, 750, "Instances", obj_reed);
         }
 
-        // Spawn notes from your global array
-        if beat_counter == global.notes_arr[note_counter][0] {
+        // --- Spawn notes from global array ---
+        // Make sure note_counter is in bounds
+        while (note_counter < array_length(global.notes_arr) &&
+               beat_counter == global.notes_arr[note_counter][0]) {
+            
             var lane = global.notes_arr[note_counter][1];
-
+            
             if (lane >= 1 && lane <= 4) {
                 var new_note_y = lane * lane_height + spawn_y_offset;
                 var new_note = instance_create_layer(1200, new_note_y, "Instances", obj_note_falling);
@@ -103,14 +119,17 @@ if (battle_phase == BattlePhase.RHYTHM) {
             note_counter++;
         }
 
+        // Reset frame counter for next beat
         frame_beat_counter = frame_beat_counter_total;
     }
 
+    // --- Draw score (UI) ---
     score_to_draw = pad_score(global.points, 5);
 
-    // Check if rhythm section is over
+    // --- Check if rhythm section is over ---
+    // Add extra beats after last note for music to finish
     if beat_counter > array_length(global.notes_arr) + 8 {
-        battle_phase = BattlePhase.RESOLVE; // stop rhythm and go back to RPG logic
+        battle_phase = BattlePhase.MENU; // stop rhythm and return to menu
         audio_stop_sound(snd_lekemusic);
     }
-}
+} 

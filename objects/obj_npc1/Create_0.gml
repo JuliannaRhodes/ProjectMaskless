@@ -7,8 +7,8 @@ txtbox = 0;
 
 range = 32;
 
-global.npc1_hp = 50;
-global.npc1_max_hp = 50;
+global.npc1_hp = 200;
+global.npc1_max_hp = 200;
 
 hp = global.npc1_hp
 max_hp = global.npc1_max_hp
