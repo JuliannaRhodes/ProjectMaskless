@@ -7,7 +7,7 @@ op_space = 50;
 pos = 0;
 
 //Pause
-option[0, 0] = "Start Game";
+option[0, 0] = "Restart";
 option[0, 1] = "Settings";
 option[0, 2] = "Quit Game";
 
@@ -20,6 +20,4 @@ option[1, 3] = "Back";
 op_length = 0;
 
 menu_level = 0;
-
-
-global.room_name = rm_main;
+global.room_name = rm_start

@@ -1,16 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_fadeout",
+  "%Name":"obj_restartmenu",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_fadeout",
+  "name":"obj_restartmenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"fades",
-    "path":"folders/Objects/fades.yy",
+    "name":"menus",
+    "path":"folders/Objects/menus.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_fade",
-    "path":"sprites/spr_fade/spr_fade.yy",
+    "name":"spr_menu",
+    "path":"sprites/spr_menu/spr_menu.yy",
   },
   "spriteMaskId":null,
   "visible":true,

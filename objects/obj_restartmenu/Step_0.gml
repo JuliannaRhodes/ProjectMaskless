@@ -30,6 +30,7 @@ if accept_key {
 				case 0:
 				instance_create_layer(0,0,"fade", obj_fadeout);
 				room_goto(global.room_name)
+				global.room_name = rm_main
 					break;
 	// settings
 				case 1:
