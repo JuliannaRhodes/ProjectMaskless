@@ -22,7 +22,7 @@ if (hit_registered) {
     if (x_distance <= 100) {
         // --- Accuracy grading ---
         var accuracy = "";
-        if (x_distance <= 25) accuracy = "PERFECT";
+        if (x_distance >= 0 && x_distance <= 25) accuracy = "PERFECT";
         else if (x_distance <= 50) accuracy = "NICE";
         else if (x_distance <= 75) accuracy = "OKAY";
         else accuracy = "MISS";
@@ -53,7 +53,7 @@ if (hit_registered) {
 
             // --- Apply damage ---
             global.npc1_hp -= damage_to_enemy;
-            global.player_hp -= damage_to_player; // usually 0 here
+            hurt_player(damage_to_player); 
             global.npc1_hp = clamp(global.npc1_hp, 0, global.npc1_max_hp);
             global.player_hp = clamp(global.player_hp, 0, global.player_max_hp);
 
@@ -84,19 +84,18 @@ if (hit_registered) {
 // --- Late miss: note passed hitbox without successful hit ---
 if (!hit_success && x < obj_hitbox.x - 100) {
     var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
-
+	var damage_to_player = 0;
     switch (phase) {
         case "ATTACK":
-            global.player_hp -= 15;
+            var damage_to_player = 15;
             badhit.text_to_draw = "Miss! You took 15 damage!";
             break;
         case "DEFEND":
-            global.player_hp -= 2;
+            var damage_to_player = 2;
             badhit.text_to_draw = "Miss! You got hit (2 dmg)!";
             break;
     }
-
-    global.player_hp = clamp(global.player_hp, 0, global.player_max_hp);
+	hurt_player(damage_to_player);
     instance_destroy();
     exit;
 }

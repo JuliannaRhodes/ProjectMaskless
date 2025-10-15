@@ -1,3 +1,5 @@
+state = player_state_free;
+
 // on create
 
 key_left = 0;
@@ -18,6 +20,7 @@ global.player_max_hp = 200;
 
 hp = global.player_hp;
 max_hp = global.player_max_hp;
+flash = 0;
 
 
 
