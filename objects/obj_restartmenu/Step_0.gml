@@ -26,9 +26,11 @@ if accept_key {
 	//pause menu
 		case 0:
 			switch(pos){
-	// start game
+	// restart game
 				case 0:
 				instance_create_layer(0,0,"fade", obj_fadeout);
+				global.spawn_x = 190;
+				global.spawn_y = 300;
 				room_goto(global.room_name)
 				global.room_name = rm_main
 					break;

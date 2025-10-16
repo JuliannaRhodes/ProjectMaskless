@@ -22,8 +22,8 @@ hp = global.player_hp;
 max_hp = global.player_max_hp;
 flash = 0;
 
-global.target_x = obj_pc1.x;
-global.target_y = obj_pc1.y;
+global.spawn_x = obj_pc1.x;
+global.spawn_y = obj_pc1.y;
 
 
 // end create
