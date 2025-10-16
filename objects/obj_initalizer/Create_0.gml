@@ -23,3 +23,5 @@ for (var i = 0; i <( 400/global.difficulty); i++) {
 		
 	array_push(global.notes_arr,[next_note,next_note_color])
 }
+
+

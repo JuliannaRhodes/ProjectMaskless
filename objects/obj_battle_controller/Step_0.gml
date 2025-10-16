@@ -69,8 +69,12 @@ if (battle_phase == BattlePhase.MENU) {
             break;
 
             case "Run":
-                room_goto(obj_battle_switcher.original_room)
-            break;
+				if (instance_exists(obj_gamecontroller)) {
+				room_goto(obj_gamecontroller.prevRoom);
+					} else {
+						show_debug_message("No controller found!");
+					}
+			break;
         }
     }
 } 

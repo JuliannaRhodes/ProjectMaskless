@@ -1,6 +1,8 @@
 script_execute(state);
 // on step
 
+if (room == rm_battle) exit; // skip logic while in battle
+
 // get keyboard input
 key_left = keyboard_check(ord("A"));
 key_right = keyboard_check(ord("D"));

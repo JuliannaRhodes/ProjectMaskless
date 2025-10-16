@@ -76,6 +76,7 @@
     {"id":{"name":"obj_fadein","path":"objects/obj_fadein/obj_fadein.yy",},},
     {"id":{"name":"obj_fadeout","path":"objects/obj_fadeout/obj_fadeout.yy",},},
     {"id":{"name":"obj_game_save","path":"objects/obj_game_save/obj_game_save.yy",},},
+    {"id":{"name":"obj_gamecontroller","path":"objects/obj_gamecontroller/obj_gamecontroller.yy",},},
     {"id":{"name":"obj_gui","path":"objects/obj_gui/obj_gui.yy",},},
     {"id":{"name":"obj_hitbox","path":"objects/obj_hitbox/obj_hitbox.yy",},},
     {"id":{"name":"obj_initalizer","path":"objects/obj_initalizer/obj_initalizer.yy",},},
