@@ -166,6 +166,7 @@
     {"name":"ChatterboxVariablesImport","order":9,"path":"scripts/ChatterboxVariablesImport/ChatterboxVariablesImport.yy",},
     {"name":"ChatterboxVariablesResetAll","order":10,"path":"scripts/ChatterboxVariablesResetAll/ChatterboxVariablesResetAll.yy",},
     {"name":"ChatterboxWait","order":11,"path":"scripts/ChatterboxWait/ChatterboxWait.yy",},
+    {"name":"enemy_dead","order":7,"path":"scripts/enemy_dead/enemy_dead.yy",},
     {"name":"game_data","order":1,"path":"scripts/game_data/game_data.yy",},
     {"name":"hurt_player","order":6,"path":"scripts/hurt_player/hurt_player.yy",},
     {"name":"IsChatterbox","order":6,"path":"scripts/IsChatterbox/IsChatterbox.yy",},

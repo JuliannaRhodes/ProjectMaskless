@@ -9,6 +9,7 @@ range = 32;
 
 global.npc1_hp = 200;
 global.npc1_max_hp = 200;
+global.battle_ending = false;
 
 
 
