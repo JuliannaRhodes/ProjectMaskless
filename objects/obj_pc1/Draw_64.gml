@@ -1,11 +1,14 @@
-if (currently_talking != noone) {
-	var x1 = 0
+if (currently_talking != noone && current_text != "") {
+	var x1 = 100
 	var y1 = window_get_height()-160;
 	var x2 = window_get_width();
 	var y2 = window_get_height();
 	
-	draw_set_color(c_black);
-	draw_rectangle(x1, y1, x2, y2, false);
+	var box_w = x2 - x1;
+    var box_h = y2 - y1;
+	
+	draw_sprite_stretched(spr_guibg_black, 0, x1, y1, box_w, box_h);
+	
 	
 	var text_x = x1 +32;
 	var text_y = y1 + 32;
