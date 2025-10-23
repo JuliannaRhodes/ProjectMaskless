@@ -5,7 +5,7 @@ if (battle_phase == BattlePhase.MENU) {
     
     // --- Left textbox (instructions) ---
     var left_x = 0;
-    var left_w = window_get_width() * 0.80; // 65% of screen width
+    var left_w = window_get_width() * 0.87; // 65% of screen width
     var left_y = bottom_y;
     var left_h = bottom_h;
 
@@ -17,30 +17,36 @@ if (battle_phase == BattlePhase.MENU) {
     draw_set_color(c_white);
     draw_text(left_x + padding_x, left_y + padding_y, "Press D F J and K to hit the notes on time");
 
-    // --- Right textbox (menu options) ---
-    var right_w = window_get_width() * 0.15; // remaining 35% of screen width
-    var right_x = window_get_width() - right_w;
-    var right_y = bottom_y;
-    var right_h = bottom_h;
+	// --- Right textbox (menu options) ---
+	var right_w = window_get_width() * 0.10;
+	var right_x = window_get_width() - right_w;
+	var right_y = bottom_y;
+	var right_h = bottom_h;
 
-    draw_sprite_stretched(spr_fight_menu, 0, right_x, right_y, right_w, right_h);
+	draw_sprite_stretched(spr_fight_menu, 0, right_x, right_y, right_w, right_h);
 
-    // Draw menu options inside right box
-    var line_height = 50;
+	// Draw menu options inside right box
+	var padding_x = 40;
+	var line_height = 50;
+	var total_menu_height = array_length(menu_options) * line_height;
+	var start_y = right_y + (right_h / 2) - (total_menu_height / 2);
 
-    for (var i = 0; i < array_length(menu_options); i++) {
-        var option_text = menu_options[i];
-        var draw_y = right_y + padding_y + line_height * i;
+	// align text to top-left
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
 
-        // Right-align text inside right box
-        if (i == menu_choice) {
-            draw_set_color(c_red);
-            draw_text(right_x + right_w - padding_x - string_width("* " + option_text), draw_y, "* " + option_text);
-        } else {
-            draw_set_color(c_white);
-            draw_text(right_x + right_w - padding_x - string_width(option_text), draw_y, option_text);
-        }
-    }
+for (var i = 0; i < array_length(menu_options); i++) {
+    var option_text = menu_options[i];
+    var draw_y = start_y + line_height * i;
+
+    if (i == menu_choice) {
+        draw_set_color(c_red);
+        draw_text(right_x + padding_x, draw_y, "* " + option_text);
+    } else {
+        draw_set_color(c_white);
+        draw_text(right_x + padding_x, draw_y, option_text);
+		}
+	}
 }
 
 
