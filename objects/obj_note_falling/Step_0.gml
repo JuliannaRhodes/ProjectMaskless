@@ -1,6 +1,12 @@
 // --- Get globals ---
 var phase = global.current_action;
 
+// --- Initialize global hit locks (once per step) ---
+if (!variable_global_exists("note_hit_lock")) {
+    global.note_hit_lock = array_create(5, false);
+}
+
+
 // --- Move note ---
 x -= global.move_speed;
 
@@ -9,12 +15,13 @@ var x_distance = abs(x - obj_hitbox.x);
 
 // --- Check for hits using keyboard just pressed ---
 var hit_registered = false;
-switch(image_index) {
-    case 1: hit_registered = keyboard_check_pressed(ord("D")); break; // green
-    case 2: hit_registered = keyboard_check_pressed(ord("F")); break; // red
-    case 3: hit_registered = keyboard_check_pressed(ord("J")); break; // orange
-    case 4: hit_registered = keyboard_check_pressed(ord("K")); break; // blue
+switch (image_index) {
+    case 1: if (!global.note_hit_lock[1] && keyboard_check_pressed(ord("D"))) hit_registered = true; break;
+    case 2: if (!global.note_hit_lock[2] && keyboard_check_pressed(ord("F"))) hit_registered = true; break;
+    case 3: if (!global.note_hit_lock[3] && keyboard_check_pressed(ord("J"))) hit_registered = true; break;
+    case 4: if (!global.note_hit_lock[4] && keyboard_check_pressed(ord("K"))) hit_registered = true; break;
 }
+
 
 var hit_success = false; // track if note was hit
 
@@ -30,6 +37,9 @@ if (hit_registered) {
         // Only treat as success if accuracy is not MISS
         if (accuracy != "MISS") {
             hit_success = true;
+				
+		// Lock this color for this frame
+		global.note_hit_lock[image_index] = true;
 
             var damage_to_enemy = 0;
             var damage_to_player = 0;
@@ -37,16 +47,17 @@ if (hit_registered) {
             switch (phase) {
                 case "ATTACK":
                     switch (accuracy) {
-                        case "OKAY": damage_to_enemy = 4; break;
-                        case "NICE": damage_to_enemy = 6; break;
+                        case "OKAY":    damage_to_enemy = 4;  break;
+                        case "NICE":    damage_to_enemy = 6;  break;
                         case "PERFECT": damage_to_enemy = 15; break;
                     }
                     break;
+
                 case "DEFEND":
                     switch (accuracy) {
-                        case "OKAY": damage_to_enemy = 1; break;
-                        case "NICE": damage_to_enemy = 4; break;
-                        case "PERFECT": damage_to_enemy = 6; break;
+                        case "OKAY":    damage_to_enemy = 1;  break;
+                        case "NICE":    damage_to_enemy = 4;  break;
+                        case "PERFECT": damage_to_enemy = 6;  break;
                     }
                     break;
             }
@@ -67,35 +78,46 @@ if (hit_registered) {
             // handled below when note passes hitbox
         }
 
-    } else if (x_distance > 100) {
-        // Early press, note still falling
+    } else if (x_distance > 100 && x_distance <= 100000) {
+        // --- Early press — note still falling ---
         var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
+        var damage_to_player = 0;
+        
         switch (phase) {
             case "ATTACK":
+                damage_to_player = 15; // Adjust as needed
                 badhit.text_to_draw = "Miss Fire! Too early!";
                 break;
+
             case "DEFEND":
+                damage_to_player = 2;
                 badhit.text_to_draw = "Miss Fire! Too early!";
                 break;
         }
+
+        hurt_player(damage_to_player);
+        instance_destroy();
     }
 }
 
 // --- Late miss: note passed hitbox without successful hit ---
 if (!hit_success && x < obj_hitbox.x - 100) {
     var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
-	var damage_to_player = 0;
+    var damage_to_player = 0;
+
     switch (phase) {
         case "ATTACK":
-            var damage_to_player = 15;
+            damage_to_player = 15;
             badhit.text_to_draw = "Miss! You took 15 damage!";
             break;
+
         case "DEFEND":
-            var damage_to_player = 2;
+            damage_to_player = 2;
             badhit.text_to_draw = "Miss! You got hit (2 dmg)!";
             break;
     }
-	hurt_player(damage_to_player);
+
+    hurt_player(damage_to_player);
     instance_destroy();
     exit;
 }

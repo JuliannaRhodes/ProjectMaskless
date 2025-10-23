@@ -22,10 +22,13 @@ hp = global.player_hp;
 max_hp = global.player_max_hp;
 flash = 0;
 
-global.spawn_x = obj_pc1.x;
-global.spawn_y = obj_pc1.y;
-starting_x = 190;
-starting_y = 300;
+global.starting_x = 190;
+global.starting_y = 300;
+global.x = global.starting_x;
+global.y = global.starting_y;
+global.player_dead = false;
+
+
 
 
 // end create

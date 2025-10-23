@@ -1,5 +1,5 @@
 if (battle_phase ==BattlePhase.MENU) {
-   var menu_x = 1050;   // x-position on the right side
+	var menu_x = 1050;   // x-position on the right side
     var menu_y = 550;   // top position
     var line_height = 50;
 
@@ -16,6 +16,7 @@ if (battle_phase ==BattlePhase.MENU) {
             draw_text(menu_x, draw_y, option_text);
         }
     }
+	draw_text(118,600, "Press D F J and K to hit the notes on time");
 }
 	
 

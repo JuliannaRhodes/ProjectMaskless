@@ -1,3 +1,8 @@
+global.starting_x = 100; // your starting player X
+global.starting_y = 300; // your starting player Y
+global.starting_room = rm_main;
+
+
 global.difficulty = 2 
 
 global.notes_arr = []

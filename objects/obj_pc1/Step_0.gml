@@ -9,7 +9,8 @@ key_down = keyboard_check(ord("S"));
 key_int1_press = keyboard_check_pressed(vk_space);
 key_int1_hold  = keyboard_check(vk_space);
 
-
+global.x = x;
+global.y = y;
 
 
 
