@@ -8,10 +8,13 @@ function player_state_free(){
     if (move_y != 0) move_x = 0; 
 
     // set player facing
-    if (move_x > 0) image_angle = 0;
-    if (move_x < 0) image_angle = 180; 
-    if (move_y > 0) image_angle = 270;
-    if (move_y < 0) image_angle = 90;
+   // if (move_x > 0) image_angle = 0;
+    //if (move_x < 0) image_angle = 180; 
+  //  if (move_y > 0) image_angle = 270;
+  //  if (move_y < 0) image_angle = 90;
+image_xscale = 1;
+image_yscalse = 1;
+
 
     // move player and collide with walls    
     move_and_collide(move_x, move_y, obj_inviswall, 4, 0, 0, move_speed, -1);

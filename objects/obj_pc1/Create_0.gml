@@ -9,6 +9,8 @@ key_left = 0;
 key_right = 0;
 key_up =0;
 key_down =0;
+image_xscale = 1;
+image_yscalse = 1;
 
 key_int1_press = 0;
 key_int1_hold = 0;
@@ -29,8 +31,8 @@ x = global.x;
 y = global.y;
 global.x = global.starting_x;
 global.y = global.starting_y;
-global.starting_x = 190;
-global.starting_y = 300;
+global.starting_x = 192;
+global.starting_y = 352;
 
 
 
