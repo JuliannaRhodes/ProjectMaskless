@@ -59,6 +59,7 @@
     {"id":{"name":"fnt_jersey","path":"fonts/fnt_jersey/fnt_jersey.yy",},},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"fnt_msgothic","path":"fonts/fnt_msgothic/fnt_msgothic.yy",},},
+    {"id":{"name":"fnt_orange","path":"fonts/fnt_orange/fnt_orange.yy",},},
     {"id":{"name":"fnt_times","path":"fonts/fnt_times/fnt_times.yy",},},
     {"id":{"name":"obj_action_attack","path":"objects/obj_action_attack/obj_action_attack.yy",},},
     {"id":{"name":"obj_action_defend","path":"objects/obj_action_defend/obj_action_defend.yy",},},
