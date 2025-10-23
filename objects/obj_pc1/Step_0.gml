@@ -22,8 +22,14 @@ key_int1_hold  = keyboard_check(vk_enter);
 
 if (key_int1_press==1)  {
 	
-	if (ChatterboxIsStopped(chatterbox)) {
-		ChatterboxJump(chatterbox, "Start");
+	if (ChatterboxIsStopped(chatterbox)) {	
+		var check_x = lengthdir_x(32, animdir * 90) + x;
+		var check_y = lengthdir_y(32, animdir * 90) + y;
+		var who_is_here = instance_place(check_x, check_y, obj_npc2);
+		if (who_is_here != noone) {	
+			ChatterboxJump(chatterbox, who_is_here.node_name);
+			currently_talking = who_is_here;
+		}
 	} else if (ChatterboxIsWaiting(chatterbox)) {
 		ChatterboxContinue(chatterbox);
 	}
@@ -33,7 +39,9 @@ if (key_int1_press==1)  {
 		current_text_index = 0;
 	} else {
 		current_text = "";
+		currently_talking = noone;
 	}
+	
 //		if (who_is_here != noone) {
 //			ChatterboxJump(chatterbox, who_is_here.node_name);
 //			currently_talking = who_is_here;

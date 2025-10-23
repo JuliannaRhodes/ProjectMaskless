@@ -14,6 +14,7 @@ move_speed = 4;
 
 move_x = 0;
 move_y = 0;
+animdir = 0; // Default direction, e.g. facing up or right depending on your setup
 
 // variables
 

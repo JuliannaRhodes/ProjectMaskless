@@ -1,4 +1,4 @@
-if (current_text != "") {
+if (currently_talking != noone) {
 	var x1 = 0
 	var y1 = window_get_height()-160;
 	var x2 = window_get_width();

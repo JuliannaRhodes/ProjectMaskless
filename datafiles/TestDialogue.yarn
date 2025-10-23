@@ -2,7 +2,7 @@
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 491,299
 __PrivCrochet_tags: 
-title: Start
+title: NPC1
 ---
 NPC1: Do you want to fight?
     -> Yes.
@@ -22,7 +22,7 @@ title: Option A
 ---
 You: cue fight
 NPC1: Wow!
-<<jump Start>>
+<<jump NPC1>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 801,361
@@ -31,7 +31,7 @@ title: Option B
 ---
 You: dont cue fight
 NPC1: Wow!
-<<jump Start>>
+<<jump NPC1>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 801,671
@@ -40,5 +40,21 @@ title: Option C
 ---
 You: temp text
 NPC1: Wow!
-<<jump Start>>
+<<jump NPC1>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 525,-227
+__PrivCrochet_tags: 
+title: Start
+---
+I think that guy wants to fight you!
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 526,-443
+__PrivCrochet_tags: 
+title: Npc2
+---
+Why don't you go up to that guy?
+
+That's your friend isn't it?
 ===
