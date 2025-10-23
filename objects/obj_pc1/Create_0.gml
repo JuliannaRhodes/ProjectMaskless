@@ -1,9 +1,4 @@
-global.player_instance = id; // store the player's own id
-state = player_state_menus;
-global.player_dead = false;
-
-
-// on create
+// movements
 
 key_left = 0;
 key_right = 0;
@@ -20,11 +15,19 @@ move_speed = 4;
 move_x = 0;
 move_y = 0;
 
+// variables
+
+state = player_state_menus;
+
+global.player_instance = id; // store the player's own id
+
 global.player_hp = 200;
 global.player_max_hp = 200;
-
 hp = global.player_hp;
 max_hp = global.player_max_hp;
+global.player_dead = false;
+
+
 flash = 0;
 
 x = global.x;
@@ -35,6 +38,14 @@ global.starting_x = 192;
 global.starting_y = 352;
 
 
+//chatterbox 
+current_text = "";
+currently_talking = noone;
+current_text_index = 0;
+current_text_line_number = 0;
 
+ChatterboxLoadFromFile("TestDialogue.yarn");
+
+chatterbox = ChatterboxCreate("TestDialogue.yarn");
 
 // end create

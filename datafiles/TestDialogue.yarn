@@ -11,7 +11,7 @@ NPC1: Do you want to fight?
     -> No Thanks.
         NPC1: Okay, let me know if you change your mind.
         <<jump Option B>>
-    -> Test if said Yes <<if visited("Option C" == false>>
+    -> Test if said Yes <<if not visited("Option C")>>
         NPC1: Sure.
         <<jump Option C>>
 ===
@@ -34,7 +34,7 @@ NPC1: Wow!
 <<jump Start>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 802,671
+__PrivCrochet_position: 801,671
 __PrivCrochet_tags: 
 title: Option C
 ---

@@ -20,10 +20,20 @@ key_int1_hold  = keyboard_check(vk_enter);
 
 
 
-//if (key_int1_press==1)  {
+if (key_int1_press==1)  {
 	
-//	if (ChatterboxIsStopped(chatterbox)) {
-		
+	if (ChatterboxIsStopped(chatterbox)) {
+		ChatterboxJump(chatterbox, "Start");
+	} else if (ChatterboxIsWaiting(chatterbox)) {
+		ChatterboxContinue(chatterbox);
+	}
+	
+	if (not ChatterboxIsStopped(chatterbox)) {
+		current_text = ChatterboxGetContent(chatterbox, 0);
+		current_text_index = 0;
+	} else {
+		current_text = "";
+	}
 //		if (who_is_here != noone) {
 //			ChatterboxJump(chatterbox, who_is_here.node_name);
 //			currently_talking = who_is_here;
@@ -38,7 +48,7 @@ key_int1_hold  = keyboard_check(vk_enter);
 //	} else {
 //		current_text = "";
 //		currently_talking = noone;
-//	}
+}
 
 
 // end step
