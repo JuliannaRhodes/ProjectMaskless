@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"player_state_battle",
+  "%Name":"spawn_player",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"player_state_battle",
+  "name":"spawn_player",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

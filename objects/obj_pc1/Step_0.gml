@@ -1,4 +1,12 @@
-script_execute(state);
+state();
+if (room == rm_main) {
+    state = player_state_free;
+}
+if (room == rm_battle) {
+    state = player_state_menus;
+}
+
+
 // on step
 
 // get keyboard input
@@ -9,8 +17,6 @@ key_down = keyboard_check(ord("S"));
 key_int1_press = keyboard_check_pressed(vk_space);
 key_int1_hold  = keyboard_check(vk_space);
 
-global.x = x;
-global.y = y;
 
 
 

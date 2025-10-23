@@ -1,6 +1,11 @@
 global.starting_x = 100; // your starting player X
 global.starting_y = 300; // your starting player Y
 global.starting_room = rm_main;
+if (room == rm_start) {
+    global.x = global.starting_x;
+    global.y = global.starting_y;
+}
+
 
 
 global.difficulty = 2 

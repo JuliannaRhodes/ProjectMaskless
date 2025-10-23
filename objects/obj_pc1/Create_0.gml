@@ -1,4 +1,7 @@
-state = player_state_free;
+global.player_instance = id; // store the player's own id
+state = player_state_menus;
+global.player_dead = false;
+
 
 // on create
 
@@ -22,11 +25,12 @@ hp = global.player_hp;
 max_hp = global.player_max_hp;
 flash = 0;
 
-global.starting_x = 190;
-global.starting_y = 300;
+x = global.x;
+y = global.y;
 global.x = global.starting_x;
 global.y = global.starting_y;
-global.player_dead = false;
+global.starting_x = 190;
+global.starting_y = 300;
 
 
 

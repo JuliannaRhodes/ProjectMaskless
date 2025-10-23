@@ -1,12 +1,13 @@
 function hurt_player(_damage){
-    global.player_hp = max(0, global.player_hp - _damage);
 
-    if (global.player_hp > 0) {
-        show_debug_message("ouch!");
-    } else if (!global.player_dead) {
-        global.player_dead = true;   // prevent repeating this block
-        with(obj_pc1) {
-            state = player_state_dead;
-        }
-    }
+global.player_hp = max(0, global.player_hp-_damage);
+	if (global.player_hp > 0)
+	{
+		show_debug_message("ouch!");
+	}
+	else if (!global.player_dead)
+	{
+		global.player_dead = true;
+		with (obj_pc1) state = player_state_dead;
+	}
 }

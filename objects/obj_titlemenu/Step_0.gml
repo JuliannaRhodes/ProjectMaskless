@@ -1,5 +1,5 @@
 // get inputs
-
+with (obj_pc1) state = player_state_menus;
 up_key= keyboard_check_pressed(vk_up);
 down_key = keyboard_check_pressed(vk_down);
 accept_key = keyboard_check_pressed(vk_enter);

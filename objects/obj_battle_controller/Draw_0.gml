@@ -2,7 +2,9 @@ if (battle_phase ==BattlePhase.MENU) {
 	var menu_x = 1050;   // x-position on the right side
     var menu_y = 550;   // top position
     var line_height = 50;
-
+	draw_set_color(c_white);
+	draw_text(118,600, "Press D F J and K to hit the notes on time");
+	
     for (var i = 0; i < array_length(menu_options); i++) {
         var option_text = menu_options[i];
         var draw_y = menu_y + i * line_height;
@@ -16,7 +18,7 @@ if (battle_phase ==BattlePhase.MENU) {
             draw_text(menu_x, draw_y, option_text);
         }
     }
-	draw_text(118,600, "Press D F J and K to hit the notes on time");
+
 }
 	
 
