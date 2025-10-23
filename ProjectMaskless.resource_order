@@ -181,6 +181,7 @@
     {"name":"spr_bg_battlerhythm","order":1,"path":"sprites/spr_bg_battlerhythm/spr_bg_battlerhythm.yy",},
     {"name":"spr_buttons","order":4,"path":"sprites/spr_buttons/spr_buttons.yy",},
     {"name":"spr_fade","order":12,"path":"sprites/spr_fade/spr_fade.yy",},
+    {"name":"spr_fight_menu","order":3,"path":"sprites/spr_fight_menu/spr_fight_menu.yy",},
     {"name":"spr_guibg_black","order":2,"path":"sprites/spr_guibg_black/spr_guibg_black.yy",},
     {"name":"spr_hitbox","order":5,"path":"sprites/spr_hitbox/spr_hitbox.yy",},
     {"name":"spr_inviswall","order":13,"path":"sprites/spr_inviswall/spr_inviswall.yy",},

@@ -220,6 +220,7 @@
     {"id":{"name":"spr_bg_battlerhythm","path":"sprites/spr_bg_battlerhythm/spr_bg_battlerhythm.yy",},},
     {"id":{"name":"spr_buttons","path":"sprites/spr_buttons/spr_buttons.yy",},},
     {"id":{"name":"spr_fade","path":"sprites/spr_fade/spr_fade.yy",},},
+    {"id":{"name":"spr_fight_menu","path":"sprites/spr_fight_menu/spr_fight_menu.yy",},},
     {"id":{"name":"spr_guibg_black","path":"sprites/spr_guibg_black/spr_guibg_black.yy",},},
     {"id":{"name":"spr_hitbox","path":"sprites/spr_hitbox/spr_hitbox.yy",},},
     {"id":{"name":"spr_inviswall","path":"sprites/spr_inviswall/spr_inviswall.yy",},},

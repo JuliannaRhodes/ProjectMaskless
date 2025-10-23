@@ -10,7 +10,7 @@ if (currently_talking != noone && current_text != "") {
 	draw_sprite_stretched(spr_guibg_black, 0, x1, y1, box_w, box_h);
 	
 	
-	var text_x = x1 +32;
+	var text_x = x1 + 32;
 	var text_y = y1 + 32;
 	
 	draw_set_color(c_white);
