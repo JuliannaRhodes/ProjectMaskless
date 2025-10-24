@@ -14,6 +14,7 @@ if (currently_talking != noone && current_text != "") {
 	var text_y = y1 + 32;
 	
 	draw_set_color(c_white);
+	draw_set_font(fnt_jersey2x);
 	draw_text_ext(text_x, text_y, string_copy(current_text, 1, current_text_index), -1, window_get_width() - 64);
 	current_text_index++;
 }
