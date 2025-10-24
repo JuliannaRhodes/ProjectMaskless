@@ -19,7 +19,7 @@
   "height":800,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"a301fa3f-d90c-4505-bdb1-29065e02760f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"a301fa3f-d90c-4505-bdb1-29065e02760f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"c46ee1d2-9c14-466e-9e64-8b6526d7f064","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"c46ee1d2-9c14-466e-9e64-8b6526d7f064","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"7f8972db-9a10-4334-ab1a-e3ee0389f9aa","blendMode":0,"displayName":"default","isLocked":false,"name":"7f8972db-9a10-4334-ab1a-e3ee0389f9aa","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_bg_battlerhythm",

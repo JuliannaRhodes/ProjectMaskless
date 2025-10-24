@@ -52,5 +52,6 @@ function pad_score(value, length) {
 	return value
 }
 
+
 credits_to_draw = "1.mp3 by Leke"
 score_to_draw =""

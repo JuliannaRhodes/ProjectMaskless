@@ -78,7 +78,7 @@ if (battle_phase == BattlePhase.MENU) {
 
 
 var lane_height = 50;
-var spawn_y_offset = 550; // pushes notes down
+var spawn_y_offset = 535; // pushes notes down
 
 // Only run rhythm logic if in rhythm phase
 if (battle_phase == BattlePhase.RHYTHM) {

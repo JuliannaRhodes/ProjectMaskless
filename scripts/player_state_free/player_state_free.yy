@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"player_state_free",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"player states",
+    "path":"folders/Scripts/player states.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

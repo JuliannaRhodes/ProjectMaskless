@@ -1,81 +1,152 @@
 if (battle_phase == BattlePhase.MENU) {
+
     // --- Bottom area dimensions ---
-    var bottom_y = window_get_height() - 200;
-    var bottom_h = 220;
-    
+    var bottom_y = window_get_height() - 300;
+    var bottom_h = 300;
+
     // --- Left textbox (instructions) ---
     var left_x = 0;
-    var left_w = window_get_width() * 0.87; // 65% of screen width
+    var left_w = window_get_width() * 0.87;
     var left_y = bottom_y;
     var left_h = bottom_h;
 
     draw_sprite_stretched(spr_fight_menu, 0, left_x, left_y, left_w, left_h);
 
-    var padding_x = 32;
-    var padding_y = 32;
+    // --- Instruction text left padding ---
+    var text_padding_x = 50; // distance from left edge
 
+    // --- Draw instruction text (left-center aligned) ---
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_middle);
     draw_set_color(c_white);
-    draw_text(left_x + padding_x, left_y + padding_y, "Press D F J and K to hit the notes on time");
+	draw_set_font(fnt_jersey2x);
+    draw_text(left_x + text_padding_x, left_y + left_h / 2,
+              "Press D F J and K to hit the notes on time");
 
-	// --- Right textbox (menu options) ---
-	var right_w = window_get_width() * 0.10;
-	var right_x = window_get_width() - right_w;
-	var right_y = bottom_y;
-	var right_h = bottom_h;
+    // --- Right textbox (menu options) ---
+    var right_w = window_get_width() * 0.10;
+    var right_x = window_get_width() - right_w;
+    var right_y = bottom_y;
+    var right_h = bottom_h;
 
-	draw_sprite_stretched(spr_fight_menu, 0, right_x, right_y, right_w, right_h);
+    draw_sprite_stretched(spr_fight_menu, 0, right_x, right_y, right_w, right_h);
 
-	// Draw menu options inside right box
-	var padding_x = 40;
-	var line_height = 50;
-	var total_menu_height = array_length(menu_options) * line_height;
-	var start_y = right_y + (right_h / 2) - (total_menu_height / 2);
+    // --- Draw menu options inside right box ---
+    var padding_x = 40;
+    var line_height = 50;
+    var total_menu_height = array_length(menu_options) * line_height;
+    var start_y = right_y + (right_h / 2) - (total_menu_height / 2);
+	
+	draw_set_font(fnt_jersey);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
 
-	// align text to top-left
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_top);
+    for (var i = 0; i < array_length(menu_options); i++) {
+        var option_text = menu_options[i];
+        var draw_y = start_y + line_height * i;
 
-for (var i = 0; i < array_length(menu_options); i++) {
-    var option_text = menu_options[i];
-    var draw_y = start_y + line_height * i;
-
-    if (i == menu_choice) {
-        draw_set_color(c_red);
-        draw_text(right_x + padding_x, draw_y, "* " + option_text);
-    } else {
-        draw_set_color(c_white);
-        draw_text(right_x + padding_x, draw_y, option_text);
-		}
-	}
+        if (i == menu_choice) {
+            draw_set_color(c_red);
+            draw_text(right_x + padding_x, draw_y, "* " + option_text);
+        } else {
+            draw_set_color(c_white);
+            draw_text(right_x + padding_x, draw_y, option_text);
+        }
+    }
 }
 
 
-
-
+// --- Rhythm phase ---
 if (battle_phase == BattlePhase.RHYTHM) {
-
+	
     draw_set_font(fnt_jersey);
     draw_set_color(c_white);
-    draw_text(550, 100, score_to_draw);
-    draw_text(550, 200, "Playing: ");
-    draw_text(100, 300, credits_to_draw);
+
+    // --- Top-left score / playing / credits ---
+    var top_padding_x = 20;
+    var top_padding_y = 20;
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+
+    draw_text(top_padding_x, top_padding_y, "Playing: ");
+    draw_text(top_padding_x, top_padding_y + 40, credits_to_draw);
 }
 
-// --- Draw HP ---
-draw_set_color(c_red);
-draw_text(50, 50, "Player HP: " + string(global.player_hp) + " / " + string(global.player_max_hp));
 
-draw_set_color(c_green);
-draw_text(400, 50, "Enemy HP: " + string(global.npc1_hp) + " / " + string(global.npc1_max_hp));
+// --- Sprite dimensions ---
+var healthbar_width = 218;
+var healthbar_height = 64;
 
+// --- Left textbox position and size ---
+var left_x = 0;
+var left_w = window_get_width() * 0.87;
+var left_y = window_get_height() - 300;
+var left_h = 300;
 
+// --- Padding between health bars and menu ---
+var bar_padding_y = 37; // vertical spacing above textbox
+var bar_spacing_x = 240; // horizontal spacing between bars
+var padding_left  = 20;
+var padding_right = 20;
+var padding_y     = (healthbar_height - 25) / 2;
+var fill_height   = 25;
 
-//var x1 = 100
-//	var y1 = window_get_height()-160;
-//	var x2 = window_get_width();
-//	var y2 = window_get_height();
-//	
-//	var box_w = x2 - x1;
-//    var box_h = y2 - y1;
-	
-//	draw_sprite_stretched(spr_guibg_black, 0, x1, y1, box_w, box_h);
+// --- Player Health Bar (leftmost, above left box) ---
+var player_healthbar_x = left_x + left_w - healthbar_width - bar_spacing_x;
+var player_healthbar_y = left_y - healthbar_height - bar_padding_y;
+
+var player_hp_ratio = global.player_hp / global.player_max_hp;
+var player_fill_width = (healthbar_width - padding_left - padding_right) * player_hp_ratio;
+
+// Draw player health bar
+draw_sprite(spr_healthbar_bg, 0, player_healthbar_x, player_healthbar_y);       // background
+draw_sprite_stretched(
+    spr_healthbar_player, // green fill
+    0,
+    player_healthbar_x + padding_left,
+    player_healthbar_y + padding_y,
+    player_fill_width,
+    fill_height
+);
+draw_sprite(spr_healthbar_border, 0, player_healthbar_x, player_healthbar_y);   // border
+
+// --- NPC1 Health Bar (rightmost, above left box) ---
+var npc_healthbar_x = player_healthbar_x + bar_spacing_x;
+var npc_healthbar_y = player_healthbar_y;
+
+var npc_hp_ratio = global.npc1_hp / global.npc1_max_hp;
+var npc_fill_width = (healthbar_width - padding_left - padding_right) * npc_hp_ratio;
+
+// Draw NPC1 health bar
+draw_sprite(spr_healthbar_bg, 0, npc_healthbar_x, npc_healthbar_y);           // background
+draw_sprite_stretched(
+    spr_healthbar_enemy, // red fill
+    0,
+    npc_healthbar_x + padding_left,
+    npc_healthbar_y + padding_y,
+    npc_fill_width,
+    fill_height
+);
+draw_sprite(spr_healthbar_border, 0, npc_healthbar_x, npc_healthbar_y);       // border
+
+// --- Save current alignment ---
+var old_halign = draw_get_halign();
+var old_valign = draw_get_valign();
+
+// --- Text padding above the bars ---
+var text_padding_y = 8;
+
+// --- Player HP Text (centered over bar) ---
+var player_hp_text = string(global.player_hp) + " / " + string(global.player_max_hp);
+draw_set_color(c_white);
+draw_set_halign(fa_center);   // horizontal center
+draw_set_valign(fa_bottom);   // bottom of text sits just above bar
+draw_text(player_healthbar_x + healthbar_width / 2, player_healthbar_y - text_padding_y, player_hp_text);
+
+// --- NPC HP Text (centered over bar) ---
+var npc_hp_text = string(global.npc1_hp) + " / " + string(global.npc1_max_hp);
+draw_text(npc_healthbar_x + healthbar_width / 2, npc_healthbar_y - text_padding_y, npc_hp_text);
+
+// --- Restore previous alignment ---
+draw_set_halign(old_halign);
+draw_set_valign(old_valign);
