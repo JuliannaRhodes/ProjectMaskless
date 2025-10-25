@@ -59,7 +59,7 @@
   "name":"ProjectMaskless",
   "resources":[
     {"id":{"name":"fnt_jersey","path":"fonts/fnt_jersey/fnt_jersey.yy",},},
-    {"id":{"name":"fnt_jersey2x","path":"fonts/fnt_jersey2x/fnt_jersey2x.yy",},},
+    {"id":{"name":"fnt_jerseysmall","path":"fonts/fnt_jerseysmall/fnt_jerseysmall.yy",},},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"fnt_msgothic","path":"fonts/fnt_msgothic/fnt_msgothic.yy",},},
     {"id":{"name":"fnt_orange","path":"fonts/fnt_orange/fnt_orange.yy",},},

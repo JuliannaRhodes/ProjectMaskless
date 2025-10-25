@@ -37,7 +37,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_jersey","order":1,"path":"fonts/fnt_jersey/fnt_jersey.yy",},
-    {"name":"fnt_jersey2x","order":5,"path":"fonts/fnt_jersey2x/fnt_jersey2x.yy",},
+    {"name":"fnt_jerseysmall","order":5,"path":"fonts/fnt_jerseysmall/fnt_jerseysmall.yy",},
     {"name":"fnt_menu","order":3,"path":"fonts/fnt_menu/fnt_menu.yy",},
     {"name":"fnt_orange","order":4,"path":"fonts/fnt_orange/fnt_orange.yy",},
     {"name":"fnt_times","order":2,"path":"fonts/fnt_times/fnt_times.yy",},

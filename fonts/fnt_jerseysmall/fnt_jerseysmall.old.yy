@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_jersey2x",
+  "%Name":"fnt_jerseysmall",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":42,
@@ -117,7 +117,7 @@
   "last":0,
   "lineHeight":57,
   "maintainGms1Font":false,
-  "name":"fnt_jersey2x",
+  "name":"fnt_jerseysmall",
   "parent":{
     "name":"Fonts",
     "path":"folders/Fonts.yy",
