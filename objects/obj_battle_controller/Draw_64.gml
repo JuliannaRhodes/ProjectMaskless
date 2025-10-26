@@ -1,7 +1,9 @@
-// Store the current alignment before making any changes
+// Store current alignment before changes
 var old_halign = draw_get_halign();
 var old_valign = draw_get_valign();
 
+// --- Global side padding for UI ---
+var side_padding = 25; // add space on left and right sides
 
 if (battle_phase == BattlePhase.MENU) {
     // --- Bottom area dimensions ---
@@ -9,16 +11,16 @@ if (battle_phase == BattlePhase.MENU) {
     var bottom_h = 300;
 
     // --- Left textbox (instructions) ---
-    var left_x = 0;
-    var left_w = window_get_width() * 0.87;
+    var left_x = side_padding; // previously 0
+    var left_w = (window_get_width() * 0.87) - side_padding;
     var left_y = bottom_y;
     var left_h = bottom_h;
     draw_sprite_stretched(spr_fight_menu, 0, left_x, left_y, left_w, left_h);
 
     // --- Instruction text left padding ---
-    var text_padding_x = 50; // distance from left edge
+    var text_padding_x = 50; // distance from left edge of the box
 
-       // --- Draw instruction text (left-center aligned) ---
+    // --- Draw instruction text (left-center aligned) ---
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
@@ -26,8 +28,8 @@ if (battle_phase == BattlePhase.MENU) {
               "Press D F J and K to hit the notes on time");
 
     // --- Right textbox (menu options) ---
-    var right_w = window_get_width() * 0.10;
-    var right_x = window_get_width() - right_w;
+    var right_w = (window_get_width() * 0.11) - side_padding;
+    var right_x = window_get_width() - right_w - side_padding; // move inward
     var right_y = bottom_y;
     var right_h = bottom_h;
     draw_sprite_stretched(spr_fight_menu, 0, right_x, right_y, right_w, right_h);
@@ -56,21 +58,18 @@ if (battle_phase == BattlePhase.MENU) {
     }
 }
 
-
 // --- BATTLE PHASE: RHYTHM ---
 if (battle_phase == BattlePhase.RHYTHM) {
     draw_set_font(fnt_jerseysmall);
     draw_set_color(c_white);
 
     // Top-left score / playing / credits
-    var top_padding_x = 20;
+    var top_padding_x = 20 + side_padding; // moved right
     var top_padding_y = 10;
     var line_spacing = 40;
 
-    // Use a temporary alignment for this specific section
-	draw_set_valign(fa_top);
+    draw_set_valign(fa_top);
     draw_set_halign(fa_left);
-
 
     draw_text(top_padding_x, top_padding_y + line_spacing, "Playing: ");
     draw_text(top_padding_x, top_padding_y + 2 * line_spacing, credits_to_draw);
@@ -81,8 +80,8 @@ draw_set_font(fnt_jerseysmall);
 var bottom_h = 300;
 var bottom_y = window_get_height() - bottom_h;
 
-var left_x = 0;
-var left_w = window_get_width() * 0.87;
+var left_x = side_padding;
+var left_w = (window_get_width() * 0.87) - side_padding;
 var left_y = bottom_y;
 var left_h = bottom_h;
 
@@ -95,8 +94,8 @@ var padding_right = 20;
 var padding_y = (healthbar_height - fill_height) / 2;
 
 // --- Player HP Bar (top-left, above left box) ---
-var player_healthbar_x = left_x + 20;
-var player_healthbar_y = left_y - healthbar_height - 20; 
+var player_healthbar_x = left_x + side_padding;
+var player_healthbar_y = left_y - healthbar_height - 20;
 var player_hp_ratio = global.player_hp / global.player_max_hp;
 var player_fill_width = (healthbar_width - padding_left - padding_right) * player_hp_ratio;
 
@@ -107,9 +106,6 @@ draw_sprite_stretched(spr_healthbar_border, 0, player_healthbar_x, player_health
 
 // Player HP Text
 var text_padding_y = 8;
-var old_halign = draw_get_halign();
-var old_valign = draw_get_valign();
-
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_bottom);
@@ -117,7 +113,7 @@ var player_hp_text = "Player HP: " + string(global.player_hp) + " / " + string(g
 draw_text(player_healthbar_x + healthbar_width / 2, player_healthbar_y - text_padding_y, player_hp_text);
 
 // --- Enemy HP Bar (top-right) ---
-var npc_healthbar_x = window_get_width() - healthbar_width - 20;
+var npc_healthbar_x = window_get_width() - healthbar_width - side_padding;
 var npc_healthbar_y = 60;
 var npc_hp_ratio = global.npc1_hp / global.npc1_max_hp;
 var npc_fill_width = (healthbar_width - padding_left - padding_right) * npc_hp_ratio;
@@ -133,6 +129,6 @@ draw_set_valign(fa_bottom);
 var npc_hp_text = "Enemy HP: " + string(global.npc1_hp) + " / " + string(global.npc1_max_hp);
 draw_text(npc_healthbar_x + healthbar_width / 2, npc_healthbar_y - text_padding_y, npc_hp_text);
 
-// --- Restore previous alignment ---
+// --- Restore alignment ---
 draw_set_halign(old_halign);
 draw_set_valign(old_valign);

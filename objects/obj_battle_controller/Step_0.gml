@@ -51,7 +51,7 @@ if (battle_phase == BattlePhase.MENU) {
                 note_counter = 0;
                 beat_counter = 0;
                 audio_play_sound(snd_lekemusic, 1, false);
-				rhythm_timer = room_speed * 10; // <-- 10-second timer
+				rhythm_timer = room_speed * 15; // <-- 10-second timer
             break;
 
             case "Defend":
@@ -61,7 +61,7 @@ if (battle_phase == BattlePhase.MENU) {
                 note_counter = 0;
                 beat_counter = 0;
                 audio_play_sound(snd_lekemusic, 1, false);
-				 rhythm_timer = room_speed * 10; // <-- 10-second timer
+				 rhythm_timer = room_speed * 15; // <-- 10-second timer
             break;
 
             case "Item":
@@ -77,8 +77,8 @@ if (battle_phase == BattlePhase.MENU) {
 
 
 
-var lane_height = 50;
-var spawn_y_offset = 535; // pushes notes down
+var lane_height = 45;
+var spawn_y_offset = 470; // pushes notes down
 
 // Only run rhythm logic if in rhythm phase
 if (battle_phase == BattlePhase.RHYTHM) {
@@ -100,7 +100,7 @@ if (battle_phase == BattlePhase.RHYTHM) {
         
         // --- Auto-spawn "reed" notes at adjustable interval ---
         if (beat_counter mod 2 == 0) {
-            instance_create_layer(1200, 750, "Instances", obj_reed);
+            instance_create_layer(1200, 675, "Instances", obj_reed);
         }
 
         // --- Spawn notes from global array ---
