@@ -88,8 +88,8 @@ var left_y = bottom_y;
 var left_h = bottom_h;
 
 // --- Sprite dimensions ---
-var healthbar_width = 350;
-var healthbar_height = 64;
+var healthbar_width = 310;
+var healthbar_height = 62;
 var fill_height = 25;
 var padding_left = 20;
 var padding_right = 20;
