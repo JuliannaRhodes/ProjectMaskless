@@ -36,7 +36,7 @@
         {"$GMRInstance":"v2","%Name":"inst_28DEBFB3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_28DEBFB3","objectId":{"name":"obj_battle_switcher","path":"objects/obj_battle_switcher/obj_battle_switcher.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-36.0,"y":162.0,},
         {"$GMRInstance":"v2","%Name":"inst_14EBC5E8","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_14EBC5E8","objectId":{"name":"obj_npc2","path":"objects/obj_npc2/obj_npc2.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_npc2","path":"objects/obj_npc2/obj_npc2.yy",},"propertyId":{"name":"node_name","path":"objects/obj_npc2/obj_npc2.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Start",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":211.0,"y":362.0,},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.609375,"scaleY":0.578125,"x":211.0,"y":389.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"trees","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_936C149","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_936C149","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"Sprite22","path":"sprites/Sprite22/Sprite22.yy",},"x":416.0,"y":408.0,},
@@ -129,7 +129,7 @@
   },
   "sequenceId":null,
   "views":[
-    {"hborder":700,"hport":720,"hspeed":-1,"hview":360,"inherit":false,"objectId":{"name":"obj_pc1","path":"objects/obj_pc1/obj_pc1.yy",},"vborder":500,"visible":true,"vspeed":-1,"wport":1280,"wview":640,"xport":0,"xview":0,"yport":0,"yview":0,},
+    {"hborder":700,"hport":360,"hspeed":-1,"hview":360,"inherit":false,"objectId":{"name":"obj_pc1","path":"objects/obj_pc1/obj_pc1.yy",},"vborder":500,"visible":true,"vspeed":-1,"wport":640,"wview":640,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},

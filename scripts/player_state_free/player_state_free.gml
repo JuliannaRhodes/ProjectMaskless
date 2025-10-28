@@ -6,11 +6,18 @@ function player_state_free() {
     if (move_x != 0) move_y = 0;
     if (move_y != 0) move_x = 0; 
 
-    // --- Set player facing direction ---
-    if (move_x > 0) animdir = 1;  // right
-    if (move_x < 0) animdir = 3;  // left
-    if (move_y > 0) animdir = 2;  // down
-    if (move_y < 0) animdir = 0;  // up
+// --- Set player facing direction ---
+if (move_x != 0 || move_y != 0) {
+    if (abs(move_x) > abs(move_y)) {
+        if (move_x > 0) animdir = 2;  // right
+        else animdir = 1;              // left
+    } else {
+        if (move_y > 0) animdir = 0;  // down
+        else animdir = 3;              // up
+    }
+}
+
+image_index = animdir;
 
     // optional: set image angle or flipping
     image_xscale = 1;
