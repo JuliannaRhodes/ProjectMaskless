@@ -193,6 +193,7 @@
     {"name":"spr_menu","order":5,"path":"sprites/spr_menu/spr_menu.yy",},
     {"name":"spr_npc_battle","order":10,"path":"sprites/spr_npc_battle/spr_npc_battle.yy",},
     {"name":"spr_npc2","order":1,"path":"sprites/spr_npc2/spr_npc2.yy",},
+    {"name":"spr_pc1_1","order":3,"path":"sprites/spr_pc1_1/spr_pc1_1.yy",},
     {"name":"spr_pc1","order":2,"path":"sprites/spr_pc1/spr_pc1.yy",},
     {"name":"spr_placeholder","order":2,"path":"sprites/spr_placeholder/spr_placeholder.yy",},
     {"name":"spr_reed","order":3,"path":"sprites/spr_reed/spr_reed.yy",},
