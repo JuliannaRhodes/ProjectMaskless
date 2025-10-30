@@ -21,14 +21,18 @@ function player_state_free() {
     // --- Initialize persistent variables ---
     if (!variable_instance_exists(id, "frame_timer")) frame_timer = 0;
     if (!variable_instance_exists(id, "frame_index")) frame_index = 0;
-    var frame_delay = 8; // number of steps before switching frame (increase for slower)
+
+    // --- Set frame delays ---
+    var frame_delay_lr = 8; // left/right idle-step-idle
+    var frame_delay_ud = 16; // up/down stepping (slower)
 
     // --- Animation handling ---
     frame_timer += 1;
+
     switch (animdir) {
         case 0: // down
             if (move_y > 0) {
-                if (frame_timer >= frame_delay) {
+                if (frame_timer >= frame_delay_ud) {
                     frame_index = (frame_index + 1) mod 2; // 2-frame walk
                     frame_timer = 0;
                 }
@@ -42,7 +46,7 @@ function player_state_free() {
 
         case 1: // left
             if (move_x < 0) {
-                if (frame_timer >= frame_delay) {
+                if (frame_timer >= frame_delay_lr) {
                     frame_index = (frame_index + 1) mod 3; // idle-step-idle
                     frame_timer = 0;
                 }
@@ -60,7 +64,7 @@ function player_state_free() {
 
         case 2: // right
             if (move_x > 0) {
-                if (frame_timer >= frame_delay) {
+                if (frame_timer >= frame_delay_lr) {
                     frame_index = (frame_index + 1) mod 3; // idle-step-idle
                     frame_timer = 0;
                 }
@@ -78,7 +82,7 @@ function player_state_free() {
 
         case 3: // up
             if (move_y < 0) {
-                if (frame_timer >= frame_delay) {
+                if (frame_timer >= frame_delay_ud) {
                     frame_index = (frame_index + 1) mod 2; // 2-frame walk
                     frame_timer = 0;
                 }
