@@ -203,5 +203,6 @@
     {"name":"spr_winbox","order":14,"path":"sprites/spr_winbox/spr_winbox.yy",},
     {"name":"Sprite17","order":1,"path":"sprites/Sprite17/Sprite17.yy",},
     {"name":"Sprite22","order":15,"path":"sprites/Sprite22/Sprite22.yy",},
+    {"name":"Sprite26","order":17,"path":"sprites/Sprite26/Sprite26.yy",},
   ],
 }

@@ -22,9 +22,9 @@ function player_state_free() {
     if (!variable_instance_exists(id, "frame_timer")) frame_timer = 0;
     if (!variable_instance_exists(id, "frame_index")) frame_index = 0;
 
-    // --- Set frame delays ---
-    var frame_delay_lr = 8; // left/right idle-step-idle
-    var frame_delay_ud = 16; // up/down stepping (slower)
+    // --- Frame delays ---
+    var frame_delay_lr = 16;
+    var frame_delay_ud = 16;
 
     // --- Animation handling ---
     frame_timer += 1;
@@ -33,7 +33,7 @@ function player_state_free() {
         case 0: // down
             if (move_y > 0) {
                 if (frame_timer >= frame_delay_ud) {
-                    frame_index = (frame_index + 1) mod 2; // 2-frame walk
+                    frame_index = (frame_index + 1) mod 2;
                     frame_timer = 0;
                 }
                 image_index = 1 + frame_index;
@@ -47,13 +47,14 @@ function player_state_free() {
         case 1: // left
             if (move_x < 0) {
                 if (frame_timer >= frame_delay_lr) {
-                    frame_index = (frame_index + 1) mod 3; // idle-step-idle
+                    frame_index = (frame_index + 1) mod 4; // idle-step-idle-altstep
                     frame_timer = 0;
                 }
                 switch (frame_index) {
                     case 0: image_index = 3; break; // idle
-                    case 1: image_index = 4; break; // step
+                    case 1: image_index = 4; break; // left step
                     case 2: image_index = 3; break; // idle
+                    case 3: image_index = 5; break; // right step (still facing left)
                 }
             } else {
                 image_index = 3;
@@ -65,13 +66,14 @@ function player_state_free() {
         case 2: // right
             if (move_x > 0) {
                 if (frame_timer >= frame_delay_lr) {
-                    frame_index = (frame_index + 1) mod 3; // idle-step-idle
+                    frame_index = (frame_index + 1) mod 4; // idle-step-idle-altstep
                     frame_timer = 0;
                 }
                 switch (frame_index) {
                     case 0: image_index = 6; break; // idle
-                    case 1: image_index = 7; break; // step
+                    case 1: image_index = 7; break; // right step
                     case 2: image_index = 6; break; // idle
+                    case 3: image_index = 8; break; // left step (still facing right)
                 }
             } else {
                 image_index = 6;
@@ -83,7 +85,7 @@ function player_state_free() {
         case 3: // up
             if (move_y < 0) {
                 if (frame_timer >= frame_delay_ud) {
-                    frame_index = (frame_index + 1) mod 2; // 2-frame walk
+                    frame_index = (frame_index + 1) mod 2;
                     frame_timer = 0;
                 }
                 image_index = 10 + frame_index;

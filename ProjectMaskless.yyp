@@ -246,6 +246,7 @@
     {"id":{"name":"spr_winbox","path":"sprites/spr_winbox/spr_winbox.yy",},},
     {"id":{"name":"Sprite17","path":"sprites/Sprite17/Sprite17.yy",},},
     {"id":{"name":"Sprite22","path":"sprites/Sprite22/Sprite22.yy",},},
+    {"id":{"name":"Sprite26","path":"sprites/Sprite26/Sprite26.yy",},},
     {"id":{"name":"tl_test","path":"tilesets/tl_test/tl_test.yy",},},
   ],
   "resourceType":"GMProject",
