@@ -69,8 +69,16 @@ if (hit_registered) {
             global.player_hp = clamp(global.player_hp, 0, global.player_max_hp);
 
             // --- Feedback ---
-            var nicejob = instance_create_layer(550, 200, "Instances", obj_nicejob);
-            nicejob.text_to_draw = accuracy;
+			var nicejob = instance_create_layer(160, 340, "Instances", obj_nicejob);
+			nicejob.text_to_draw = accuracy;
+
+			// make MISS red, others white
+			if (accuracy == "MISS") {
+			    nicejob.text_color = c_red;
+			} else {
+			    nicejob.text_color = c_white;
+			}
+
 
             instance_destroy(); // destroy note only on successful hit
         } else {
@@ -80,18 +88,22 @@ if (hit_registered) {
 
     } else if (x_distance > 100 && x_distance <= 100000) {
         // --- Early press — note still falling ---
-        var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
+        var badhit = instance_create_layer(140, 340, "Instances", obj_nicejob);
         var damage_to_player = 0;
         
         switch (phase) {
             case "ATTACK":
                 damage_to_player = 15; // Adjust as needed
                 badhit.text_to_draw = "Miss Fire! Too early!";
+				badhit.text_color = c_red;
+				audio_play_sound(snd_miss, 1, false);
                 break;
 
             case "DEFEND":
                 damage_to_player = 2;
                 badhit.text_to_draw = "Miss Fire! Too early!";
+				badhit.text_color = c_red;
+				audio_play_sound(snd_miss, 1, false);
                 break;
         }
 
@@ -102,18 +114,24 @@ if (hit_registered) {
 
 // --- Late miss: note passed hitbox without successful hit ---
 if (!hit_success && x < obj_hitbox.x - 100) {
-    var badhit = instance_create_layer(550, 200, "Instances", obj_nicejob);
+    var badhit = instance_create_layer(170, 340, "Instances", obj_nicejob);
     var damage_to_player = 0;
 
     switch (phase) {
         case "ATTACK":
             damage_to_player = 15;
-            badhit.text_to_draw = "Miss! You took 15 damage!";
+            badhit.text_to_draw = "Miss!";
+			badhit.text_color = c_red;
+			audio_play_sound(snd_miss, 1, false);
+
             break;
 
         case "DEFEND":
             damage_to_player = 2;
-            badhit.text_to_draw = "Miss! You got hit (2 dmg)!";
+            badhit.text_to_draw = "Miss!";
+			badhit.text_color = c_red;
+			audio_play_sound(snd_miss, 1, false);
+
             break;
     }
 
