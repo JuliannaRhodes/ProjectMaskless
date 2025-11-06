@@ -1,4 +1,4 @@
-// --- Step Event of dialogue controller ---
+// --- Step Event ---
 
 var check_radius = 64;
 var nearest_dist = 9999;
@@ -13,9 +13,16 @@ with (obj_npcs) {
     }
 }
 
-// --- Interact key pressed ---
-if (keyboard_check_pressed(vk_enter)) {
+// --- Get number of dialogue options ---
+var _count = ChatterboxGetOptionCount(chatterbox);
+
+// --- Get input ---
+var enter_pressed = keyboard_check_pressed(vk_enter);
+
+// --- Dialogue logic ---
+if (enter_pressed) {
     if (nearest_npc != noone && ChatterboxIsStopped(chatterbox)) {
+        // Start dialogue
         currently_talking = nearest_npc;
         ChatterboxJump(chatterbox, nearest_npc.node_name);
         chatterbox_update();
@@ -23,46 +30,39 @@ if (keyboard_check_pressed(vk_enter)) {
         current_text_index = 0;
         option_index = 0;
         active = true;
-    } 
-    else if (!ChatterboxIsStopped(chatterbox) && ChatterboxIsWaiting(chatterbox)) {
-        ChatterboxContinue(chatterbox);
-        chatterbox_update();
     }
-}
-
-// --- Options navigation ---
-var _count = ChatterboxGetOptionCount(chatterbox);
-
-if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
-    // Navigate options
-    var _key = keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
-    if (_key != 0) {
-        repeat (1 + (ChatterboxGetOptionConditionBool(chatterbox, wrap(option_index + _key, 0, _count - 1)) == false)) {
-            option_index = wrap(option_index + _key, 0, _count - 1);
-        }
-    }
-
-    // Select option
-    if (keyboard_check_pressed(vk_enter)) {
+    else if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
+        // Select an option if available
         ChatterboxSelect(chatterbox, option_index);
-        chatterbox_update(); // process the selection
+        chatterbox_update();
         option_index = 0;
 
         if (!ChatterboxIsStopped(chatterbox)) {
             current_text = ChatterboxGetContent(chatterbox, 0);
             current_text_index = 0;
         } else {
+            // Dialogue ended
             current_text = "";
             currently_talking = noone;
             active = false;
         }
     }
+    else if (!ChatterboxIsStopped(chatterbox) && ChatterboxIsWaiting(chatterbox)) {
+        // Continue dialogue if waiting
+        ChatterboxContinue(chatterbox);
+        chatterbox_update();
+    }
 }
 
-// --- Continue waiting dialogue ---
-if (ChatterboxIsWaiting(chatterbox) && keyboard_check_pressed(vk_space)) {
-    ChatterboxContinue(chatterbox);
-    chatterbox_update();
+// --- Option navigation ---
+var _count = ChatterboxGetOptionCount(chatterbox);
+if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
+    var _key = keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
+    if (_key != 0) {
+        repeat (1 + (ChatterboxGetOptionConditionBool(chatterbox, wrap(option_index + _key, 0, _count - 1)) == false)) {
+            option_index = wrap(option_index + _key, 0, _count - 1);
+        }
+    }
 }
 
 // --- Stop dialogue if player walks too far ---
