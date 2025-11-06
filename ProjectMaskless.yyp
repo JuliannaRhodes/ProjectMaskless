@@ -103,6 +103,7 @@
     {"id":{"name":"rm_end","path":"rooms/rm_end/rm_end.yy",},},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
+    {"id":{"name":"RoomUI","path":"roomui/RoomUI/RoomUI.yy",},},
     {"id":{"name":"__ChatterboxArrayCopyPart","path":"scripts/__ChatterboxArrayCopyPart/__ChatterboxArrayCopyPart.yy",},},
     {"id":{"name":"__ChatterboxArrayToString","path":"scripts/__ChatterboxArrayToString/__ChatterboxArrayToString.yy",},},
     {"id":{"name":"__ChatterboxBufferBatch","path":"scripts/__ChatterboxBufferBatch/__ChatterboxBufferBatch.yy",},},

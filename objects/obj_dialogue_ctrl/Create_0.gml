@@ -1,14 +1,19 @@
-// Initalize chatterbox and set variables
+// --- Dialogue controller variables ---
+active = false;                  // whether a conversation is currently active
+chatterbox = noone;              // the current chatterbox instance
+currently_talking = noone;       // the NPC instance player is talking to
+current_text = "";               // current line of dialogue to draw
+current_text_index = 0;          // character index for typewriter effect
+current_text_line_number = 0;    // optional: tracks which line in chatterbox
 
-ChatterboxLoadFromFile("TestDialogue.yarn");  // load file
-ChatterboxAddFunction("bg", baackground_set_index);   // add function to change background index
-chatterbox = ChatterboxCreate();   // create a chatterbox
-ChatterboxJump(chatterbox, "Start");    // go to start node
-chatterbox_update();      // get current node and current node text
+option_index = 0;                // selected menu option
 
-option_index = 0;       // initalize option index
+// --- UI layout ---
+op_border = 8;                   // padding inside box
+op_space = 28;                   // spacing between options
+width = 0;
+height = 0;
 
-size = [0.7, 0.75];    // character sprite scale (small for not speaking and large for speaking)
-color = [c_ltgray, c_white];      // character sprite blend (dark for not speaking white for speaking)
-
-
+// --- Load chatterbox file ---
+ChatterboxLoadFromFile("TestDialogue.yarn");
+chatterbox = ChatterboxCreate("TestDialogue.yarn");

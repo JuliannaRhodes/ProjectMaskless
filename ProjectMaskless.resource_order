@@ -74,6 +74,7 @@
     {"name":"rm_death","order":4,"path":"rooms/rm_death/rm_death.yy",},
     {"name":"rm_end","order":3,"path":"rooms/rm_end/rm_end.yy",},
     {"name":"rm_start","order":2,"path":"rooms/rm_start/rm_start.yy",},
+    {"name":"RoomUI","order":16,"path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"__ChatterboxArrayCopyPart","order":2,"path":"scripts/__ChatterboxArrayCopyPart/__ChatterboxArrayCopyPart.yy",},
     {"name":"__ChatterboxArrayToString","order":3,"path":"scripts/__ChatterboxArrayToString/__ChatterboxArrayToString.yy",},
     {"name":"__ChatterboxBufferBatch","order":4,"path":"scripts/__ChatterboxBufferBatch/__ChatterboxBufferBatch.yy",},

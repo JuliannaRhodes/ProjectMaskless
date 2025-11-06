@@ -38,15 +38,6 @@ global.y = global.starting_y;
 global.starting_x = 192;
 global.starting_y = 352;
 
-
-//chatterbox 
-current_text = "";
-currently_talking = noone;
-current_text_index = 0;
-current_text_line_number = 0;
-
-ChatterboxLoadFromFile("TestDialogue.yarn");
-
-chatterbox = ChatterboxCreate("TestDialogue.yarn");
+global.player = id;
 
 // end create
