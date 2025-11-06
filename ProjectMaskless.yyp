@@ -49,7 +49,6 @@
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"TestDialogue.yarn","CopyToMask":-1,"filePath":"datafiles","name":"TestDialogue.yarn","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":"TestDialouge.yarn","CopyToMask":-1,"filePath":"datafiles","name":"TestDialouge.yarn","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
@@ -79,6 +78,7 @@
     {"id":{"name":"obj_btn_orange","path":"objects/obj_btn_orange/obj_btn_orange.yy",},},
     {"id":{"name":"obj_btn_red","path":"objects/obj_btn_red/obj_btn_red.yy",},},
     {"id":{"name":"obj_dialogue_ctrl","path":"objects/obj_dialogue_ctrl/obj_dialogue_ctrl.yy",},},
+    {"id":{"name":"obj_dialoguemenu","path":"objects/obj_dialoguemenu/obj_dialoguemenu.yy",},},
     {"id":{"name":"obj_fadein","path":"objects/obj_fadein/obj_fadein.yy",},},
     {"id":{"name":"obj_fadeout","path":"objects/obj_fadeout/obj_fadeout.yy",},},
     {"id":{"name":"obj_game_save","path":"objects/obj_game_save/obj_game_save.yy",},},
@@ -90,6 +90,7 @@
     {"id":{"name":"obj_note_falling","path":"objects/obj_note_falling/obj_note_falling.yy",},},
     {"id":{"name":"obj_npc1","path":"objects/obj_npc1/obj_npc1.yy",},},
     {"id":{"name":"obj_npc2","path":"objects/obj_npc2/obj_npc2.yy",},},
+    {"id":{"name":"obj_npcs","path":"objects/obj_npcs/obj_npcs.yy",},},
     {"id":{"name":"obj_pc1","path":"objects/obj_pc1/obj_pc1.yy",},},
     {"id":{"name":"obj_reed","path":"objects/obj_reed/obj_reed.yy",},},
     {"id":{"name":"obj_restartmenu","path":"objects/obj_restartmenu/obj_restartmenu.yy",},},

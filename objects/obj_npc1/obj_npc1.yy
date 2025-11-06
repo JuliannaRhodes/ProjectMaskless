@@ -13,7 +13,10 @@
     "name":"characters",
     "path":"folders/Objects/characters.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_npcs",
+    "path":"objects/obj_npcs/obj_npcs.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -27,7 +30,9 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v1","%Name":"node_name","filters":[],"listItems":[],"multiselect":false,"name":"node_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"Npc1","varType":2,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
