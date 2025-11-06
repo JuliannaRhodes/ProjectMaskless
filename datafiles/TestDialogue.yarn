@@ -4,26 +4,15 @@ __PrivCrochet_position: 823,53
 __PrivCrochet_tags: 
 title: Option A
 ---
-You: cue fight
 Alrighty
+<<StartBattle()>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 821,319
+__PrivCrochet_position: 813,321
 __PrivCrochet_tags: 
 title: Option B
 ---
-You: dont cue fight
-NPC1: Erm
-<<jump Npc1>>
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: 822,614
-__PrivCrochet_tags: 
-title: Option C
----
-You: temp text
-NPC1: Sure
-<<jump Npc1>>
+Okay. Let me know if you change your mind.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 523,-225
@@ -48,28 +37,16 @@ title: NPC1
 ---
 Do you want to fight?
     -> Yes.
-        Let's go!
         <<jump Option A>>
     -> No Thanks.
-        Okay, let me know if you change your mind.
         <<jump Option B>>
-    -> Test if said Yes <<if not visited("Option C")>>
-        Sure.
+    -> Test if said Yes <<if not visited("Option B")>>
         <<jump Option C>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 1233,246
+__PrivCrochet_position: 827,574
 __PrivCrochet_tags: 
-title: Npc1
+title: Option C
 ---
-Do you want to fight?
-    -> Yes.
-        Let's go!
-        <<jump Option A>>
-    -> No Thanks.
-        Okay, let me know if you change your mind.
-        <<jump Option B>>
-    -> Test if said Yes <<if not visited("Option C")>>
-        Sure.
-        <<jump Option C>>
+Finally
 ===
