@@ -1,6 +1,6 @@
 // --- Step Event ---
 
-var check_radius = 64;
+var check_radius = 70;
 var nearest_dist = 9999;
 var nearest_npc = noone;
 
@@ -68,7 +68,7 @@ if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
 // --- Stop dialogue if player walks too far ---
 if (currently_talking != noone && instance_exists(currently_talking) && instance_exists(obj_pc1)) {
     var dist = point_distance(obj_pc1.x, obj_pc1.y, currently_talking.x, currently_talking.y);
-    if (dist > 96) {
+    if (dist > 55) {
         ChatterboxStop(chatterbox);
         current_text = "";
         current_text_index = 0;

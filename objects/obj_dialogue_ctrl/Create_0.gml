@@ -30,9 +30,15 @@ ChatterboxAddFunction("StartBattle", function() {
     global.x = obj_pc1.x;
     global.y = obj_pc1.y;
 
+    // Stop chatterbox and clear dialogue so text disappears immediately
+    ChatterboxStop(chatterbox);
+    current_text = "";
+    current_text_index = 0;
+    currently_talking = noone;
+
     // Trigger a short delay before switching to battle room
     with (obj_dialogue_ctrl) {
-        alarm[0] = 15; // 15 frames = ~0.25 seconds; adjust lower for faster
+        alarm[0] = 15; // 15 frames = ~0.25 seconds
     }
 });
 

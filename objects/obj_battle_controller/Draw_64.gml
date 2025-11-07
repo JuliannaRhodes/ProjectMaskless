@@ -97,7 +97,7 @@ var padding_right = 20;
 var padding_y = (healthbar_height - fill_height) / 2;
 // --- Player HP Bar ---
 var extra_length = 80; // how much longer the bars extend inward
-var player_healthbar_x = left_x + side_padding - 10;
+var player_healthbar_x = left_x + side_padding - 20;
 var player_healthbar_y = left_y - healthbar_height + 40;
 var player_healthbar_w = healthbar_width + extra_length;
 var player_hp_ratio = global.player_hp / global.player_max_hp;
