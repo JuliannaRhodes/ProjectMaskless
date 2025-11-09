@@ -3,6 +3,7 @@
 
 
 
+
 //Default vertex colour when drawing text models. This can be overwritten by the
 //`.starting_format()` text element method. This will not affect `draw_text_scribble()`
 //which instead uses `draw_get_color()`.

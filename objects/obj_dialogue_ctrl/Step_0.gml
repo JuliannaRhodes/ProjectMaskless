@@ -3,6 +3,7 @@
 var check_radius = 70;
 var nearest_dist = 9999;
 var nearest_npc = noone;
+scribble_object.char_index = typist;
 
 // --- Find nearest NPC ---
 with (obj_npcs) {
@@ -30,6 +31,8 @@ if (enter_pressed) {
         current_text_index = 0;
         option_index = 0;
         active = true;
+		scribble_object.text = current_text; // update what’s being said
+
     }
     else if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
         // Select an option if available
@@ -39,10 +42,12 @@ if (enter_pressed) {
 
         if (!ChatterboxIsStopped(chatterbox)) {
             current_text = ChatterboxGetContent(chatterbox, 0);
+			scribble_object.text = current_text; // update what’s being said
             current_text_index = 0;
         } else {
             // Dialogue ended
             current_text = "";
+			scribble_object.text = current_text; // update what’s being said
             currently_talking = noone;
             active = false;
         }
@@ -71,6 +76,7 @@ if (currently_talking != noone && instance_exists(currently_talking) && instance
     if (dist > 55) {
         ChatterboxStop(chatterbox);
         current_text = "";
+		scribble_object.text = current_text; // update what’s being said
         current_text_index = 0;
         currently_talking = noone;
         active = false;

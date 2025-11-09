@@ -13,11 +13,18 @@ op_space = 28;
 width = 0;
 height = 0;
 
+scribble_object = scribble(current_text)
+	.starting_format("fnt_jersey", c_white)
+	
+typist = scribble_typist();
+typist.in(0.6, 0.5);
+
+
 // --- Load chatterbox file ---
 ChatterboxLoadFromFile("TestDialogue.yarn");
 
 // Define custom functions BEFORE creating the chatterbox
-ChatterboxAddFunction("StartBattle", function() {
+scribble_typists_add_event("StartBattle", function() {
     if (instance_exists(obj_battle_switcher)) exit;
 
     // Create battle switcher object
@@ -38,7 +45,7 @@ ChatterboxAddFunction("StartBattle", function() {
 
     // Trigger a short delay before switching to battle room
     with (obj_dialogue_ctrl) {
-        alarm[0] = 15; // 15 frames = ~0.25 seconds
+        alarm[0] = 75; // 15 frames = ~0.25 seconds
     }
 });
 
