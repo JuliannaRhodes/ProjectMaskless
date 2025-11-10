@@ -6,6 +6,7 @@ current_text = "";
 current_text_index = 0;
 current_text_line_number = 0;
 option_index = 0;
+text_clear_pending = false;
 
 // --- UI layout ---
 op_border = 8;
@@ -36,16 +37,13 @@ scribble_typists_add_event("StartBattle", function() {
     // Store player position for returning later
     global.x = obj_pc1.x;
     global.y = obj_pc1.y;
-
-    // Stop chatterbox and clear dialogue so text disappears immediately
-    ChatterboxStop(chatterbox);
-    current_text = "";
-    current_text_index = 0;
-    currently_talking = noone;
-
+	
+  with (obj_dialogue_ctrl) {	
+	alarm[1] = 40;
+	}
     // Trigger a short delay before switching to battle room
     with (obj_dialogue_ctrl) {
-        alarm[0] = 75; // 15 frames = ~0.25 seconds
+        alarm[0] = 100; // 15 frames = ~0.25 seconds
     }
 });
 

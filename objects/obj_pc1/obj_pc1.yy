@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_pc1",
-    "path":"sprites/spr_pc1/spr_pc1.yy",
+    "name":"spr_ainoora",
+    "path":"sprites/spr_ainoora/spr_ainoora.yy",
   },
   "spriteMaskId":null,
   "visible":true,
