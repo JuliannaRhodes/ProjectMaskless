@@ -40,4 +40,11 @@ global.starting_y = 352;
 
 global.player = id;
 
+// Inventory setup
+
+global.inventory = [
+    { name: "Health Potion", amount: 3 }
+];
+
+
 // end create

@@ -81,6 +81,61 @@ if (battle_phase == BattlePhase.RHYTHM) {
     draw_text(top_padding_x, top_padding_y + 2 * line_spacing, credits_to_draw);
 }
 
+
+if (battle_phase == BattlePhase.ITEM_MENU) {
+    var gui_w = display_get_gui_width();
+    var gui_h = display_get_gui_height();
+
+    var side_padding = 20;    // padding from screen edges
+    var bottom_padding = 50;  // space from bottom
+    var box_height = 200;     // same as dialogue box
+    var box_width = gui_w - (side_padding * 2);
+    var box_x = side_padding;
+    var box_y = gui_h - box_height - bottom_padding;
+
+    // Draw box background
+    draw_sprite_stretched(spr_fight_menu, 0, box_x, box_y, box_width, box_height);
+
+    // Draw title
+    draw_set_font(fnt_jersey_Big);
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_text(box_x + box_width / 2, box_y + 25, "Select an Item");
+
+    // Draw items as text lines with padding inside the box
+    var inner_padding = 50;   // padding inside the box
+    var y_offset = 70;
+    var line_height = 30;
+    var current_line = 0;
+
+    draw_set_font(fnt_jersey);
+    draw_set_halign(fa_left); // **left-align text**
+    draw_set_valign(fa_top);
+
+    for (var i = 0; i < array_length(global.inventory); i++) {
+        var item = global.inventory[i];
+
+        for (var j = 0; j < item.amount; j++) {
+            var line_y = box_y + y_offset + current_line * line_height;
+
+            // Highlight selected line
+            if (current_line == item_selected) {
+                draw_set_color(c_red);
+                draw_text(box_x + inner_padding, line_y, "* " + item.name);
+            } else {
+                draw_set_color(c_white);
+                draw_text(box_x + inner_padding, line_y, item.name);
+            }
+
+            current_line++;
+        }
+    }
+}
+
+
+
+
+
 // --- Bottom area / left box dimensions (always defined) ---
 draw_set_font(fnt_jersey);
 var bottom_h = 300;

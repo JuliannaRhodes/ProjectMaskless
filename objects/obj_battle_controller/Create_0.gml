@@ -3,7 +3,8 @@ enum BattlePhase {
     MENU,
     ATTACK,
     DEFEND,
-    RHYTHM
+    RHYTHM,
+	ITEM_MENU
 }
 
 // Start in menu (player chooses Attack/Defend/etc.)
@@ -17,7 +18,7 @@ bg_layer_id = layer_background_get_id("background_battle");
 // start with menu background
 layer_background_sprite(bg_layer_id, spr_bg_battlemenu);
 
-
+item_selected = 0;
 
 global.battle_phase = BattlePhase.MENU;
 

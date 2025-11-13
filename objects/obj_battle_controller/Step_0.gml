@@ -68,7 +68,9 @@ if (battle_phase == BattlePhase.MENU) {
             break;
 
             case "Item":
-                show_debug_message("Used an item!");
+					battle_phase = BattlePhase.ITEM_MENU;
+					item_selected = 0;
+					
             break;
 
             case "Run":
@@ -135,4 +137,49 @@ if (battle_phase == BattlePhase.RHYTHM) {
         battle_phase = BattlePhase.MENU; // stop rhythm and return to menu
         audio_stop_sound(snd_lekemusic);
     }
-} 
+}
+
+if (battle_phase == BattlePhase.ITEM_MENU) {
+    // Calculate total lines (flattened inventory)
+    var total_lines = 0;
+    for (var i = 0; i < array_length(global.inventory); i++) {
+        total_lines += global.inventory[i].amount;
+    }
+
+    // Navigate up/down through flattened list
+    if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_left)) {
+        item_selected = (item_selected - 1 + total_lines) mod total_lines;
+    }
+    if (keyboard_check_pressed(vk_down) || keyboard_check_pressed(vk_right)) {
+        item_selected = (item_selected + 1) mod total_lines;
+    }
+
+    // Use item
+    if (keyboard_check_pressed(vk_enter)) {
+        // Map selected line back to inventory entry
+        var line_counter = 0;
+        for (var i = 0; i < array_length(global.inventory); i++) {
+            var item = global.inventory[i];
+            for (var j = 0; j < item.amount; j++) {
+                if (line_counter == item_selected) {
+                    // Use this item
+                    if (item.name == "Health Potion") {
+                        global.player_hp = clamp(global.player_hp + 25, 0, global.player_max_hp);
+                        item.amount -= 1;
+                        show_debug_message("Used Health Potion! Restored 25 HP.");
+                        // Optional: remove from inventory if amount hits 0
+                        if (item.amount <= 0) {
+                            array_delete(global.inventory, i, 1);
+                        }
+                    }
+                }
+                line_counter++;
+            }
+        }
+    }
+
+    // Cancel back to main menu
+    if (keyboard_check_pressed(vk_escape)) {
+        battle_phase = BattlePhase.MENU;
+    }
+}
