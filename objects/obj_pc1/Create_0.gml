@@ -10,7 +10,7 @@ image_yscalse = 1;
 key_int1_press = 0;
 key_int1_hold = 0;
 
-move_speed = 2;
+move_speed = 1;
 
 move_x = 0;
 move_y = 0;

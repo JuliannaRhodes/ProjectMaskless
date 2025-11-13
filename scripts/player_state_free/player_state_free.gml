@@ -21,10 +21,11 @@ function player_state_free() {
     // --- Initialize persistent variables ---
     if (!variable_instance_exists(id, "frame_timer")) frame_timer = 0;
     if (!variable_instance_exists(id, "frame_index")) frame_index = 0;
+    if (!variable_instance_exists(id, "frame_forward")) frame_forward = true;
 
     // --- Frame delays ---
-    var frame_delay_lr = 16;
-    var frame_delay_ud = 16;
+    var frame_delay_lr = 20; // faster left/right
+    var frame_delay_ud = 16; // normal up/down
 
     // --- Animation handling ---
     frame_timer += 1;
@@ -36,9 +37,9 @@ function player_state_free() {
                     frame_index = (frame_index + 1) mod 2;
                     frame_timer = 0;
                 }
-                image_index = 1 + frame_index;
+                image_index = 1 + frame_index; // 1, 2
             } else {
-                image_index = 0;
+                image_index = 0; // idle down
                 frame_index = 0;
                 frame_timer = 0;
             }
@@ -47,38 +48,36 @@ function player_state_free() {
         case 1: // left
             if (move_x < 0) {
                 if (frame_timer >= frame_delay_lr) {
-                    frame_index = (frame_index + 1) mod 4; // idle-step-idle-altstep
+                    // ping-pong logic
+                    if (frame_forward) frame_index += 1; else frame_index -= 1;
+                    if (frame_index >= 2) { frame_index = 2; frame_forward = false; }
+                    if (frame_index <= 0) { frame_index = 0; frame_forward = true; }
                     frame_timer = 0;
                 }
-                switch (frame_index) {
-                    case 0: image_index = 3; break; // idle
-                    case 1: image_index = 4; break; // left step
-                    case 2: image_index = 3; break; // idle
-                    case 3: image_index = 5; break; // right step (still facing left)
-                }
+                image_index = 4 + frame_index; // 4,5,6
             } else {
-                image_index = 3;
+                image_index = 3; // idle left
                 frame_index = 0;
                 frame_timer = 0;
+                frame_forward = true;
             }
             break;
 
         case 2: // right
             if (move_x > 0) {
                 if (frame_timer >= frame_delay_lr) {
-                    frame_index = (frame_index + 1) mod 4; // idle-step-idle-altstep
+                    // ping-pong logic
+                    if (frame_forward) frame_index += 1; else frame_index -= 1;
+                    if (frame_index >= 2) { frame_index = 2; frame_forward = false; }
+                    if (frame_index <= 0) { frame_index = 0; frame_forward = true; }
                     frame_timer = 0;
                 }
-                switch (frame_index) {
-                    case 0: image_index = 6; break; // idle
-                    case 1: image_index = 7; break; // right step
-                    case 2: image_index = 6; break; // idle
-                    case 3: image_index = 8; break; // left step (still facing right)
-                }
+                image_index = 8 + frame_index; // 8,9,10
             } else {
-                image_index = 6;
+                image_index = 7; // idle right
                 frame_index = 0;
                 frame_timer = 0;
+                frame_forward = true;
             }
             break;
 
@@ -88,9 +87,9 @@ function player_state_free() {
                     frame_index = (frame_index + 1) mod 2;
                     frame_timer = 0;
                 }
-                image_index = 10 + frame_index;
+                image_index = 12 + frame_index; // 12,13
             } else {
-                image_index = 9;
+                image_index = 11; // idle up
                 frame_index = 0;
                 frame_timer = 0;
             }
