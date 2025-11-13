@@ -1,7 +1,10 @@
 // Store old alignment before making changes
+
 var old_halign = draw_get_halign();
 var old_valign = draw_get_valign();
 var side_padding = 20;
+
+
 
 // Get GUI dimensions (safe for fullscreen/windowed)
 var gui_w = display_get_gui_width();
@@ -104,7 +107,9 @@ var player_hp_ratio = global.player_hp / global.player_max_hp;
 var player_fill_width = (player_healthbar_w - padding_left - padding_right) * player_hp_ratio;
 
 draw_sprite_stretched(spr_healthbar_bg, 0, player_healthbar_x, player_healthbar_y, player_healthbar_w, healthbar_height);
-draw_sprite_stretched(spr_healthbar_player, 0, player_healthbar_x + padding_left, player_healthbar_y + padding_y, player_fill_width, fill_height);
+var healthbar_frame = (player_flash_timer > 0) ? 1 : 0;
+draw_sprite_stretched(spr_healthbar_player, healthbar_frame, player_healthbar_x + padding_left, player_healthbar_y + padding_y, player_fill_width, fill_height);
+
 draw_sprite_stretched(spr_healthbar_border, 0, player_healthbar_x, player_healthbar_y, player_healthbar_w, healthbar_height);
 
 // Player HP Text

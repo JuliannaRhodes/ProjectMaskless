@@ -387,6 +387,7 @@
     {"id":{"name":"spr_healthbar_bg","path":"sprites/spr_healthbar_bg/spr_healthbar_bg.yy",},},
     {"id":{"name":"spr_healthbar_border","path":"sprites/spr_healthbar_border/spr_healthbar_border.yy",},},
     {"id":{"name":"spr_healthbar_enemy","path":"sprites/spr_healthbar_enemy/spr_healthbar_enemy.yy",},},
+    {"id":{"name":"spr_healthbar_hurt","path":"sprites/spr_healthbar_hurt/spr_healthbar_hurt.yy",},},
     {"id":{"name":"spr_healthbar_player","path":"sprites/spr_healthbar_player/spr_healthbar_player.yy",},},
     {"id":{"name":"spr_hitbox","path":"sprites/spr_hitbox/spr_hitbox.yy",},},
     {"id":{"name":"spr_hivanna","path":"sprites/spr_hivanna/spr_hivanna.yy",},},

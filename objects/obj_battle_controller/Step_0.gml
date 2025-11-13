@@ -28,6 +28,9 @@ else if (battle_phase == BattlePhase.RHYTHM) {
 	with (obj_action_run) visible = false;
 }
 
+if (player_flash_timer > 0) {
+    player_flash_timer--;
+}
 
 //MENU INPUT
 if (battle_phase == BattlePhase.MENU) {

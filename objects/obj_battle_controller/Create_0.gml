@@ -35,7 +35,7 @@ global.current_action = "";
 
 global.note_spawn_interval = 4; // spawn a note every 4 beats (slower)
 
-
+player_flash_timer = 0;
 frame_counter = 0
 note_counter = 0
 

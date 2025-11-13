@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_npc2",
-    "path":"sprites/spr_npc2/spr_npc2.yy",
+    "name":"spr_hivanna",
+    "path":"sprites/spr_hivanna/spr_hivanna.yy",
   },
   "spriteMaskId":null,
   "visible":true,

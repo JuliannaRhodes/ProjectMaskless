@@ -330,6 +330,7 @@
     {"name":"spr_healthbar_bg","order":6,"path":"sprites/spr_healthbar_bg/spr_healthbar_bg.yy",},
     {"name":"spr_healthbar_border","order":7,"path":"sprites/spr_healthbar_border/spr_healthbar_border.yy",},
     {"name":"spr_healthbar_enemy","order":8,"path":"sprites/spr_healthbar_enemy/spr_healthbar_enemy.yy",},
+    {"name":"spr_healthbar_hurt","order":11,"path":"sprites/spr_healthbar_hurt/spr_healthbar_hurt.yy",},
     {"name":"spr_healthbar_player","order":9,"path":"sprites/spr_healthbar_player/spr_healthbar_player.yy",},
     {"name":"spr_hitbox","order":1,"path":"sprites/spr_hitbox/spr_hitbox.yy",},
     {"name":"spr_hivanna","order":4,"path":"sprites/spr_hivanna/spr_hivanna.yy",},

@@ -3,7 +3,9 @@ function hurt_player(_damage){
 global.player_hp = max(0, global.player_hp-_damage);
 	if (global.player_hp > 0)
 	{
-		show_debug_message("ouch!");
+		if (instance_exists(obj_battle_controller)) {
+        with (obj_battle_controller) player_flash_timer = 15; // lasts 15 frames
+		}
 	}
 	else if (!global.player_dead)
 	{
