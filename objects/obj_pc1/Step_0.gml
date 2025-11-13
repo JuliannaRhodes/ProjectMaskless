@@ -11,10 +11,13 @@ key_int1_hold  = keyboard_check(vk_enter);
 
 // player state
 state();
-if (room == rm_main) {
+if (global.entering_battle == true) {
+	state = player_state_menus;
+}
+else if (room == rm_main) {
     state = player_state_free;
 }
-if (room == rm_battle) {
+else if (room == rm_battle) {
     state = player_state_menus;
 }
 

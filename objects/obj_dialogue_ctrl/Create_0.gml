@@ -7,6 +7,7 @@ current_text_index = 0;
 current_text_line_number = 0;
 option_index = 0;
 text_clear_pending = false;
+global.entering_battle = false;
 
 // --- UI layout ---
 op_border = 8;
@@ -29,6 +30,7 @@ scribble_typists_add_event("StartBattle", function() {
     if (instance_exists(obj_battle_switcher)) exit;
 
     // Create battle switcher object
+	global.entering_battle = true;
     var _switcher = instance_create_depth(0, 0, 0, obj_battle_switcher);
     _switcher.player_data = obj_pc1;
     _switcher.enemy_data = currently_talking;
