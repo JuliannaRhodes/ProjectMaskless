@@ -7,8 +7,8 @@ txtbox = 0;
 
 range = 32;
 
-global.npc1_hp = 500;
-global.npc1_max_hp = 500;
+global.npc1_hp = 1000;
+global.npc1_max_hp = 1000;
 global.battle_ending = false;
 
 

@@ -28,6 +28,7 @@ var hit_success = false; // track if note was hit
 if (hit_registered) {
     if (x_distance <= 100) {
         // --- Accuracy grading ---
+		audio_play_sound(snd_hitnote, 1, false);
         var accuracy = "";
         if (x_distance >= 0 && x_distance <= 25) accuracy = "PERFECT";
         else if (x_distance <= 50) accuracy = "NICE";
@@ -96,14 +97,14 @@ if (hit_registered) {
                 damage_to_player = 15; // Adjust as needed
                 badhit.text_to_draw = "Miss Fire! Too early!";
 				badhit.text_color = c_red;
-				audio_play_sound(snd_miss, 1, false);
+				audio_play_sound(snd_missnote, 1, false);
                 break;
 
             case "DEFEND":
                 damage_to_player = 2;
                 badhit.text_to_draw = "Miss Fire! Too early!";
 				badhit.text_color = c_red;
-				audio_play_sound(snd_miss, 1, false);
+				audio_play_sound(snd_missnote, 1, false);
                 break;
         }
 
@@ -122,7 +123,7 @@ if (!hit_success && x < obj_hitbox.x - 100) {
             damage_to_player = 15;
             badhit.text_to_draw = "Miss!";
 			badhit.text_color = c_red;
-			audio_play_sound(snd_miss, 1, false);
+			audio_play_sound(snd_missnote, 1, false);
 
             break;
 
@@ -130,7 +131,7 @@ if (!hit_success && x < obj_hitbox.x - 100) {
             damage_to_player = 2;
             badhit.text_to_draw = "Miss!";
 			badhit.text_color = c_red;
-			audio_play_sound(snd_miss, 1, false);
+			audio_play_sound(snd_missnote, 1, false);
 
             break;
     }

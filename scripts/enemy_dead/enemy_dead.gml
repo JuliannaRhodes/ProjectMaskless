@@ -3,5 +3,6 @@ function enemy_dead(){
 	global.x = 100; // safe X for player
 	global.y = 300; // safe Y for player
 	room_goto(global.return_room);
-
+	
+	
 }

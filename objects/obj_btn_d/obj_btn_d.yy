@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_btn_orange",
+  "%Name":"obj_btn_d",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_btn_orange",
+  "name":"obj_btn_d",
   "overriddenProperties":[],
   "parent":{
     "name":"music",

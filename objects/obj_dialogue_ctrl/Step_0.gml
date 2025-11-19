@@ -64,6 +64,9 @@ var _count = ChatterboxGetOptionCount(chatterbox);
 if (_count > 0 && !ChatterboxIsWaiting(chatterbox)) {
     var _key = keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
     if (_key != 0) {
+		// Play navigation sound
+		audio_play_sound(snd_button, 1, false); // second argument = priority, third = loop false
+
         repeat (1 + (ChatterboxGetOptionConditionBool(chatterbox, wrap(option_index + _key, 0, _count - 1)) == false)) {
             option_index = wrap(option_index + _key, 0, _count - 1);
         }

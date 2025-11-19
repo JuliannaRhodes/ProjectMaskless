@@ -8,29 +8,51 @@ if (room == rm_start) {
 }
 
 
+// --- Rhythm game settings ---
+global.difficulty = 2;  // not used now, optional later
 
-global.difficulty = 2 
+// --- Manual notes array ---
+// Each note: [beat_number, lane_number]
+// You can pick which note on which beat. Fractional beats are fine (e.g., 1.5 = eighth note)
+global.notes_arr = [
+	[1, 1],
+    [2, 2],
+    [3, 1],
+    [4, 3],
+    [5, 2],
+    [6, 1],
+    [7, 4],
+    [8, 2],
+    [9, 3],
+    [10, 1],
+    [11, 2],
+    [12, 3],
+    [13, 4],
+    [14, 1],
+    [15, 2],
+    [16, 3],
+    [17, 4],
+    [18, 1],
+    [19, 2],
+    [20, 3],
+    [21, 4],
+    [22, 1],
+    [23, 2],
+    [24, 3],
+    [25, 4],
+    [26, 1],
+    [27, 2],
+    [28, 3],
+    [29, 4],
+    [30, 1]
+];
 
-global.notes_arr = []
+// --- Rhythm counters ---
+note_counter = 0;  // which note in array we're on
+beat_counter = 0;  // current beat
+frame_beat_counter_total = room_speed * 60 / 120; // 120 BPM
+frame_beat_counter = frame_beat_counter_total;
 
-// [Beat, Note]
+// --- Move speed of notes ---
+global.move_speed = 8;  // adjust to match rhythm visually
 
-for (var i = 0; i <( 400/global.difficulty); i++) {
-		var next_note = 0
-		var next_note_color = 0
-		
-		if i < 4 {
-				next_note = (i * global.difficulty) + 8
-				next_note_color = 1
-		}
-		else if i < 8 {
-			next_note = (i * global.difficulty) + 8
-			next_note_color = 8 - i
-		}
-		else {
-			next_note = (i * global.difficulty) + 16
-			next_note_color = irandom(4) + 1
-		}
-		
-	array_push(global.notes_arr,[next_note,next_note_color])
-}

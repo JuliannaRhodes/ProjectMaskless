@@ -19,7 +19,8 @@ scribble_object = scribble(current_text)
 	.starting_format("fnt_jersey", c_white)
 	
 typist = scribble_typist();
-typist.in(0.6, 0.5);
+typist.in(0.4, 0.5);
+typist.sound_per_char([snd_typing3, snd_typing2, snd_typing3], 1, 1, " .,?!aeiou");
 
 
 // --- Load chatterbox file ---
