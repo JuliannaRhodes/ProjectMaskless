@@ -56,5 +56,5 @@ function pad_score(value, length) {
 }
 
 
-credits_to_draw = "1.mp3 by Leke"
+credits_to_draw = "Untitled by Julianna Rhodes JayieB"
 score_to_draw =""

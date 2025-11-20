@@ -331,6 +331,7 @@
     {"name":"snd_typing1","order":4,"path":"sounds/snd_typing1/snd_typing1.yy",},
     {"name":"snd_typing2","order":5,"path":"sounds/snd_typing2/snd_typing2.yy",},
     {"name":"snd_typing3","order":6,"path":"sounds/snd_typing3/snd_typing3.yy",},
+    {"name":"snd_winvolume","order":13,"path":"sounds/snd_winvolume/snd_winvolume.yy",},
     {"name":"scribble_fallback_bulletpoint","order":23,"path":"sprites/scribble_fallback_bulletpoint/scribble_fallback_bulletpoint.yy",},
     {"name":"spr_ainoora","order":3,"path":"sprites/spr_ainoora/spr_ainoora.yy",},
     {"name":"spr_bg_battlemenu","order":4,"path":"sprites/spr_bg_battlemenu/spr_bg_battlemenu.yy",},

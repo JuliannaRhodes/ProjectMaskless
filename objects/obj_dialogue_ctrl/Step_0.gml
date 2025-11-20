@@ -4,7 +4,7 @@ var check_radius = 70;
 var nearest_dist = 9999;
 var nearest_npc = noone;
 scribble_object.char_index = typist;
-if (global.dialogue_locked) {
+if (global.dialogue_locked && ChatterboxIsStopped(obj_dialogue_ctrl.chatterbox)) {
     exit; // skip any chatterbox updates, prevents typing/advancing
 }
 

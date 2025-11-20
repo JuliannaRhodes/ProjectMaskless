@@ -1,5 +1,6 @@
 // Begin rhythm after item use
 if (global.item_used_this_turn) {
+	global.current_action = "ATTACK"
     battle_phase = BattlePhase.RHYTHM;
 
     frame_counter = 0;

@@ -387,6 +387,7 @@
     {"id":{"name":"snd_typing1","path":"sounds/snd_typing1/snd_typing1.yy",},},
     {"id":{"name":"snd_typing2","path":"sounds/snd_typing2/snd_typing2.yy",},},
     {"id":{"name":"snd_typing3","path":"sounds/snd_typing3/snd_typing3.yy",},},
+    {"id":{"name":"snd_winvolume","path":"sounds/snd_winvolume/snd_winvolume.yy",},},
     {"id":{"name":"scribble_fallback_bulletpoint","path":"sprites/scribble_fallback_bulletpoint/scribble_fallback_bulletpoint.yy",},},
     {"id":{"name":"spr_ainoora","path":"sprites/spr_ainoora/spr_ainoora.yy",},},
     {"id":{"name":"spr_bg_battlemenu","path":"sprites/spr_bg_battlemenu/spr_bg_battlemenu.yy",},},

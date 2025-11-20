@@ -5,9 +5,10 @@ __PrivCrochet_tags:
 title: Option A
 ---
 Alrighty [StartBattle]
+<<stop>>
 ===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: 813,321
+__PrivCrochet_colorID: 8
+__PrivCrochet_position: 770,563
 __PrivCrochet_tags: 
 title: Option B
 ---
@@ -37,13 +38,13 @@ title: NPC1
 Do you want to fight?
     -> Yes. <<if not visited("Option B")>>
         <<jump Option A>>
-    -> No Thanks.
-        <<jump Option B>>
     -> I'm ready now <<if visited("Option B")>>
         <<jump Option C>>
+    -> No Thanks.
+        <<jump Option B>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 827,574
+__PrivCrochet_position: 757,301
 __PrivCrochet_tags: 
 title: Option C
 ---

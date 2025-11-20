@@ -29,10 +29,9 @@ ChatterboxLoadFromFile("TestDialogue.yarn");
 
 // Define custom functions BEFORE creating the chatterbox
 scribble_typists_add_event("StartBattle", function() {
+	global.dialogue_locked = true;
     if (instance_exists(obj_battle_switcher)) exit;
-	    global.dialogue_locked = true;
-    
-    // Stop current chatterbox typing
+	// Stop current chatterbox typing
     if (instance_exists(obj_dialogue_ctrl) && obj_dialogue_ctrl.chatterbox != noone) {
         ChatterboxStop(obj_dialogue_ctrl.chatterbox); // stops current dialogue
         obj_dialogue_ctrl.active = false;
@@ -50,12 +49,10 @@ scribble_typists_add_event("StartBattle", function() {
     global.x = obj_pc1.x;
     global.y = obj_pc1.y;
 	
-  with (obj_dialogue_ctrl) {	
-	alarm[1] = 40;
-	}
+
     // Trigger a short delay before switching to battle room
     with (obj_dialogue_ctrl) {
-        alarm[0] = 100; // 15 frames = ~0.25 seconds
+        alarm[0] = 40; // 15 frames = ~0.25 seconds
     }
 });
 
