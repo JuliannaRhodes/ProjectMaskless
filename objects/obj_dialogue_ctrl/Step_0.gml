@@ -4,6 +4,9 @@ var check_radius = 70;
 var nearest_dist = 9999;
 var nearest_npc = noone;
 scribble_object.char_index = typist;
+if (global.dialogue_locked) {
+    exit; // skip any chatterbox updates, prevents typing/advancing
+}
 
 // --- Find nearest NPC ---
 with (obj_npcs) {

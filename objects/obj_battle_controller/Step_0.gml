@@ -1,7 +1,6 @@
 /// --- BACKGROUND AND VISIBILITY ---
 if (battle_phase == BattlePhase.MENU) {
     layer_background_sprite(bg_layer_id, spr_bg_battlemenu);
-
     // Hide GH buttons and reed notes
     with (obj_btn_k) visible = false;
     with (obj_btn_f) visible = false;
@@ -89,6 +88,7 @@ if (battle_phase == BattlePhase.MENU) {
             case "Item":
                 battle_phase = BattlePhase.ITEM_MENU;
                 item_selected = 0;
+				global.item_menu_ready = false; // prevent instant use
             break;
 
             case "Run":
@@ -106,6 +106,7 @@ if (battle_phase == BattlePhase.RHYTHM) {
     rhythm_timer--;
     if (rhythm_timer <= 0) {
         battle_phase = BattlePhase.MENU;
+		global.item_used_this_turn = false;
         audio_stop_sound(snd_song_p1);
         audio_stop_sound(snd_song_p2);
         exit;
@@ -154,48 +155,74 @@ if (battle_phase == BattlePhase.RHYTHM) {
     // --- End rhythm if all notes are done + buffer ---
     if (note_counter >= array_length(global.notes_arr) && beat_counter > array_length(global.notes_arr) + 8) {
         battle_phase = BattlePhase.MENU;
+		global.item_used_this_turn = false;
         audio_stop_sound(snd_song_p1);
         audio_stop_sound(snd_song_p2);
     }
 }
 
-
 /// --- ITEM MENU ---
 if (battle_phase == BattlePhase.ITEM_MENU) {
-    // Flatten inventory
-    var total_lines = 0;
-    for (var i = 0; i < array_length(global.inventory); i++) {
-        total_lines += global.inventory[i].amount;
-    }
+// --- Prevent Enter from instant use on first frame ---
+        if (!global.item_menu_ready) {
+            global.item_menu_ready = true;
+            return;
+        }
 
-    // Navigate
-    if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_left)) {
-        item_selected = (item_selected - 1 + total_lines) mod total_lines;
-    }
-    if (keyboard_check_pressed(vk_down) || keyboard_check_pressed(vk_right)) {
-        item_selected = (item_selected + 1) mod total_lines;
-    }
-
-    // Use item
-    if (keyboard_check_pressed(vk_enter)) {
-        var line_counter = 0;
+        // --- Flatten inventory ---
+        var total_lines = 0;
         for (var i = 0; i < array_length(global.inventory); i++) {
-            var item = global.inventory[i];
-            for (var j = 0; j < item.amount; j++) {
-                if (line_counter == item_selected) {
-                    if (item.name == "Health Potion") {
-                        global.player_hp = clamp(global.player_hp + 25, 0, global.player_max_hp);
+            total_lines += global.inventory[i].amount;
+        }
+
+        if (total_lines <= 0) {
+            show_debug_message("No items in inventory!");
+            battle_phase = BattlePhase.MENU;
+            return;
+        }
+
+        // --- Navigate item cursor ---
+        if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_left)) {
+            item_selected = (item_selected - 1 + total_lines) mod total_lines;
+        }
+        if (keyboard_check_pressed(vk_down) || keyboard_check_pressed(vk_right)) {
+            item_selected = (item_selected + 1) mod total_lines;
+        }
+
+        // --- Use item ---
+        if (keyboard_check_pressed(vk_enter)) {
+            if (global.item_used_this_turn) {
+                show_debug_message("You already used an item this turn!");
+                return;
+            }
+
+            var line_counter = 0;
+            for (var i = 0; i < array_length(global.inventory); i++) {
+                var item = global.inventory[i];
+                for (var j = 0; j < item.amount; j++) {
+                    if (line_counter == item_selected) {
+
+                        // Apply item
+                        global.item_used_this_turn = true;
+                        if (item.name == "Health Potion") {
+                            global.player_hp = clamp(global.player_hp + 25, 0, global.player_max_hp);
+                        }
+
+                        // Remove one from stack
                         item.amount -= 1;
-                        show_debug_message("Used Health Potion! Restored 25 HP.");
                         if (item.amount <= 0) array_delete(global.inventory, i, 1);
+
+                        show_debug_message("Used item: " + item.name);
+                        alarm[0] = room_speed * .5; // 3 seconds delay
+
+                        return;
                     }
+                    line_counter++;
                 }
-                line_counter++;
             }
         }
-    }
 
-    // Cancel back to menu
+ // Cancel / back to menu
     if (keyboard_check_pressed(vk_escape)) {
         battle_phase = BattlePhase.MENU;
     }

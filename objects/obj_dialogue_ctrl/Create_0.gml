@@ -8,6 +8,7 @@ current_text_line_number = 0;
 option_index = 0;
 text_clear_pending = false;
 global.entering_battle = false;
+global.dialogue_locked = false;
 
 // --- UI layout ---
 op_border = 8;
@@ -29,6 +30,14 @@ ChatterboxLoadFromFile("TestDialogue.yarn");
 // Define custom functions BEFORE creating the chatterbox
 scribble_typists_add_event("StartBattle", function() {
     if (instance_exists(obj_battle_switcher)) exit;
+	    global.dialogue_locked = true;
+    
+    // Stop current chatterbox typing
+    if (instance_exists(obj_dialogue_ctrl) && obj_dialogue_ctrl.chatterbox != noone) {
+        ChatterboxStop(obj_dialogue_ctrl.chatterbox); // stops current dialogue
+        obj_dialogue_ctrl.active = false;
+        obj_dialogue_ctrl.current_text = "";
+    }
 
     // Create battle switcher object
 	global.entering_battle = true;
