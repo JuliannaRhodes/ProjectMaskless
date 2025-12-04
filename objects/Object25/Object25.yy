@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_npc_battle",
-    "path":"sprites/spr_npc_battle/spr_npc_battle.yy",
+    "name":"spr_muinel",
+    "path":"sprites/spr_muinel/spr_muinel.yy",
   },
   "spriteMaskId":null,
   "visible":true,

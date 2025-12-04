@@ -7,6 +7,7 @@ if (global.item_used_this_turn) {
     note_counter = 0;
     beat_counter = 0;
     frame_beat_counter = frame_beat_counter_total;
+	audio_stop_sound(snd_bass);
     audio_play_sound(snd_song_p1, 1, false);
     rhythm_timer = room_speed * 15;
 }
