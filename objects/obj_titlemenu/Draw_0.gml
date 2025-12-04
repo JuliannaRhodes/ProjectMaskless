@@ -23,13 +23,27 @@ draw_sprite_ext(sprite_index, image_index, x, y, width/sprite_width, height/spri
 // draw the options
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
+// Animate the wave once per frame
+scribble_anim_wave(1, 20, 0.2);
 
-for(var i = 0; i < op_length; i++)
-	{
-	var _c = c_white;
-	if pos == i{_c = c_red};
-	var _string = option[menu_level, i];
-	if pos == i{_string = "*" + option[menu_level, i]};
-	
-	draw_text_color(x+op_border, y+op_border + op_space*i, _string, _c, _c, _c, _c, 1);
-	}
+for (var i = 0; i < op_length; i++) {
+    var scribble_string;
+
+    // Selected option
+    if (pos == i) {
+        // Bold + red star (no wobble)
+        var star_text = "[#ff0000][b]* [/b]";
+
+        // Bold + red + wobble for the option text only
+        var main_text = "[#ff0000][b][wave]" + option[menu_level, i] + "[/wave][/b]";
+
+        scribble_string = star_text + main_text;
+
+    } else {
+        // Non-selected option (normal)
+        scribble_string = option[menu_level, i];
+    }
+
+    // Draw the Scribble text
+    draw_text_scribble(x + op_border, y + op_border + op_space * i, scribble_string);
+}

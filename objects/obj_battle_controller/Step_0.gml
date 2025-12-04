@@ -60,10 +60,11 @@ if (battle_phase == BattlePhase.MENU) {
     // Confirm selection
     if (keyboard_check_pressed(vk_enter)) {
         var choice = menu_options[menu_choice];
-        audio_stop_sound(snd_bass);
+   
 
         switch (choice) {
             case "Attack":
+				audio_stop_sound(snd_bass);
                 global.current_action = "ATTACK"; 
                 battle_phase = BattlePhase.RHYTHM;
                 frame_counter = 0;
@@ -75,6 +76,7 @@ if (battle_phase == BattlePhase.MENU) {
             break;
 
             case "Defend":
+				audio_stop_sound(snd_bass);
                 global.current_action = "DEFEND"; 
                 battle_phase = BattlePhase.RHYTHM;
                 frame_counter = 0;
@@ -92,6 +94,7 @@ if (battle_phase == BattlePhase.MENU) {
             break;
 
             case "Run":
+				audio_stop_sound(snd_bass);
                 room_goto(obj_battle_switcher.original_room);
             break;
         }

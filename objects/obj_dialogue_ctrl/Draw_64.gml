@@ -78,15 +78,29 @@ if (currently_talking != noone && instance_exists(currently_talking) && current_
 
         draw_set_font(fnt_jerseysmall);
         var drawn_index = 0;
-        for (var i = 0; i < _count; i++) {
-            if (!ChatterboxGetOptionConditionBool(chatterbox, i)) continue;
+// Animate the wave globally (call once per frame, e.g., in Draw Event)
+scribble_anim_wave(1, 20, 0.2);
 
-            var _string = ChatterboxGetOption(chatterbox, i);
-            var _c = (option_index == i) ? c_red : c_white;
-            if (option_index == i) _string = "*" + _string;
+for (var i = 0; i < _count; i++) {
+    // Skip options that fail their condition
+    if (!ChatterboxGetOptionConditionBool(chatterbox, i)) continue;
 
-            draw_text_color(_x, _y + 30 * drawn_index, _string, _c, _c, _c, _c, 1);
-            drawn_index++;
-        }
+    // Get option text
+    var option_text = ChatterboxGetOption(chatterbox, i);
+
+    // Default: non-selected option
+    var scribble_string = option_text;
+
+    if (option_index == i) {
+        // Selected option: add red star + wobbling text
+        var star_text = "[#ff0000]* ";                     // red star, no wobble
+        var main_text = "[#ff0000][wave]" + option_text + "[/wave]"; // red + wave effect
+        scribble_string = star_text + main_text;
+    }
+
+    // Draw the Scribble text
+    draw_text_scribble(_x, _y + op_space * i, scribble_string);
+}
+
     }
 }

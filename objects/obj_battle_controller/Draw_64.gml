@@ -52,14 +52,23 @@ if (battle_phase == BattlePhase.MENU) {
 	for (var i = 0; i < array_length(menu_options); i++) {
 	    var option_text = menu_options[i];
 	    var draw_y = start_y + line_height * i;
+		scribble_anim_wave(1,20,.2)
+		
+		
+		if (i == menu_choice) {
+		 // Bold + red star, no wobble
+		 var star_text  = "[#ff0000]* ";
 
-	    if (i == menu_choice) {
-	        draw_set_color(c_red);
-	        draw_text(right_x + padding_x, draw_y, "* " + option_text);
-	    } else {
-	        draw_set_color(c_white);
-	        draw_text(right_x + padding_x, draw_y, option_text);
-	    }
+    // Bold + red + wobble on the main text only
+		  var main_text  = "[#ff0000][wave]" + option_text + "[/wave]";
+
+		   draw_text_scribble(right_x + padding_x, draw_y, star_text + main_text);
+
+} else {
+    // Non-selected option (normal)
+    draw_text_scribble(right_x + padding_x, draw_y, option_text);
+}
+
 	}
 
 }

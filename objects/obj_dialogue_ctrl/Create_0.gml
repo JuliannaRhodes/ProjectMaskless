@@ -18,6 +18,7 @@ height = 0;
 
 scribble_object = scribble(current_text)
 	.starting_format("fnt_jersey", c_white)
+scribble_anim_wave(1,20,.2)
 	
 typist = scribble_typist();
 typist.in(0.4, 0.5);

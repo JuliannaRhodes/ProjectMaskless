@@ -5,6 +5,7 @@ draw_set_font(fnt_jerseysmall);
 // Dynamically calculate width
 var _new_w = 0;
 var _count = ChatterboxGetOptionCount(chatterbox);
+scribble_anim_wave(1,20,.2)
 
 for (var i = 0; i < _count; i++) {
     var _option = ChatterboxGetOption(obj_pc1.chatterbox, i);
